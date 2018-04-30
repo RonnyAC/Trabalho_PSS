@@ -16,7 +16,7 @@ public class Consultora implements Serializable{
     private String nome;
     private Integer cpf;
     private Integer codSite;
-    private Calendar dataNascimento;
+    private String dataNascimento;
 
     //CONSTRUTOR
     public Consultora() {
@@ -55,11 +55,11 @@ public class Consultora implements Serializable{
         this.codSite = codSite;
     }
 
-    public Calendar getDataNascimento() {
+    public String getDataNascimento() {
         return dataNascimento;
     }
 
-    public void setDataNascimento(Calendar dataNascimento) {
+    public void setDataNascimento(String dataNascimento) {
         this.dataNascimento = dataNascimento;
     }
 
