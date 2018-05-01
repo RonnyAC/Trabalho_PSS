@@ -25,4 +25,10 @@ public class DAOConsultora {
         return true;
     }
     
+    public boolean alterar( int posicao, Consultora consultora){        
+        Dados.listaConsultoras.set(posicao, consultora);
+        consultora.setCodigo(posicao+1);
+        return true;
+    }
+    
 }
