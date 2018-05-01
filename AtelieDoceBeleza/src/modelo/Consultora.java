@@ -14,9 +14,10 @@ public class Consultora implements Serializable{
     //ATRIBUTOS
     private Integer codigo;
     private String nome;
-    private Integer cpf;
+    private String cpf;
     private Integer codSite;
     private String dataNascimento;
+    private Status status;
 
     //CONSTRUTOR
     public Consultora() {
@@ -39,11 +40,11 @@ public class Consultora implements Serializable{
         this.nome = nome;
     }
 
-    public Integer getCpf() {
+    public String getCpf() {
         return cpf;
     }
 
-    public void setCpf(Integer cpf) {
+    public void setCpf(String cpf) {
         this.cpf = cpf;
     }
 
@@ -62,6 +63,16 @@ public class Consultora implements Serializable{
     public void setDataNascimento(String dataNascimento) {
         this.dataNascimento = dataNascimento;
     }
+
+    public Status getStatus() {
+        return status;
+    }
+
+    public void setStatus(Status status) {
+        this.status = status;
+    }
+    
+    
 
     @Override
     public int hashCode() {
