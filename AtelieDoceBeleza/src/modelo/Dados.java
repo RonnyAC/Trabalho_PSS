@@ -14,4 +14,5 @@ public class Dados {
         
     public static List<Consultora> listaConsultoras = new ArrayList<>();
     //public static List<Produto> listaProdutos = new ArrayList<>();
+    public static List<ContasPagar> listaContasPagar = new ArrayList<>();
 }
