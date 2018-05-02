@@ -35,6 +35,7 @@ public class formPrincipal extends javax.swing.JFrame {
         menuConsultoras = new javax.swing.JMenu();
         menuManterConsultoras = new javax.swing.JMenuItem();
         menuProdutos = new javax.swing.JMenu();
+        menuManterProdutos = new javax.swing.JMenuItem();
         menuContasPagar = new javax.swing.JMenu();
         menuContasReceber = new javax.swing.JMenu();
 
@@ -61,6 +62,15 @@ public class formPrincipal extends javax.swing.JFrame {
         jMenuBar1.add(menuConsultoras);
 
         menuProdutos.setText("Produtos");
+
+        menuManterProdutos.setText("Manter Produtos");
+        menuManterProdutos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuManterProdutosActionPerformed(evt);
+            }
+        });
+        menuProdutos.add(menuManterProdutos);
+
         jMenuBar1.add(menuProdutos);
 
         menuContasPagar.setText("Contas a Pagar");
@@ -97,6 +107,15 @@ public class formPrincipal extends javax.swing.JFrame {
         form.setResizable(false);
         form.setVisible(true);
     }//GEN-LAST:event_menuManterConsultorasActionPerformed
+
+    private void menuManterProdutosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuManterProdutosActionPerformed
+        formProdutos form = new formProdutos(this, true);
+        form.setDefaultCloseOperation(JDialog.DO_NOTHING_ON_CLOSE);
+        form.setTitle("Manter Produtos");        
+        form.setLocationRelativeTo(null);
+        form.setResizable(false);
+        form.setVisible(true);
+    }//GEN-LAST:event_menuManterProdutosActionPerformed
 
     /**
      * @param args the command line arguments
@@ -140,6 +159,7 @@ public class formPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenu menuContasPagar;
     private javax.swing.JMenu menuContasReceber;
     private javax.swing.JMenuItem menuManterConsultoras;
+    private javax.swing.JMenuItem menuManterProdutos;
     private javax.swing.JMenu menuProdutos;
     // End of variables declaration//GEN-END:variables
 }
