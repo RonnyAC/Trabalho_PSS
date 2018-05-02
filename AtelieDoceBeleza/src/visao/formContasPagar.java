@@ -35,7 +35,7 @@ public class formContasPagar extends javax.swing.JDialog {
     private void desabilitarBotoes(){
         btnCancelar.setEnabled(false);
         btnSalvar.setEnabled(false);
-        CmbBoxContaPaga.setEnabled(false);
+        cmbBoxContasPagar.setEnabled(false);
         btnNova.setEnabled(true);
         btnEditar.setEnabled(true);
         btnFechar.setEnabled(true);
@@ -45,7 +45,7 @@ public class formContasPagar extends javax.swing.JDialog {
     private void habilitarBotoes(){
         btnCancelar.setEnabled(true);
         btnSalvar.setEnabled(true);
-        CmbBoxContaPaga.setEnabled(true);
+        cmbBoxContasPagar.setEnabled(true);
         btnNova.setEnabled(false);
         btnEditar.setEnabled(false);
         btnFechar.setEnabled(false);
@@ -89,7 +89,6 @@ public class formContasPagar extends javax.swing.JDialog {
         btnEditar = new javax.swing.JButton();
         btnCancelar = new javax.swing.JButton();
         lblStatus = new javax.swing.JLabel();
-        CmbBoxContaPaga = new javax.swing.JComboBox<>();
         lblCodigo1 = new javax.swing.JLabel();
         txtDescricao = new javax.swing.JTextField();
         txtData = new javax.swing.JTextField();
@@ -102,6 +101,7 @@ public class formContasPagar extends javax.swing.JDialog {
         lblCodigo5 = new javax.swing.JLabel();
         lblCodigo6 = new javax.swing.JLabel();
         txtValorParcela = new javax.swing.JTextField();
+        cmbBoxContasPagar = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -185,12 +185,6 @@ public class formContasPagar extends javax.swing.JDialog {
 
         lblStatus.setText("Conta Paga:");
 
-        CmbBoxContaPaga.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CmbBoxContaPagaActionPerformed(evt);
-            }
-        });
-
         lblCodigo1.setText("Descrição:");
 
         txtDescricao.addActionListener(new java.awt.event.ActionListener() {
@@ -239,6 +233,13 @@ public class formContasPagar extends javax.swing.JDialog {
             }
         });
 
+        cmbBoxContasPagar.setModel(new DefaultComboBoxModel<>(Situacao.values()));
+        cmbBoxContasPagar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbBoxContasPagarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -277,14 +278,14 @@ public class formContasPagar extends javax.swing.JDialog {
                             .addComponent(lblStatus, javax.swing.GroupLayout.Alignment.TRAILING))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(CmbBoxContaPaga, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtDescricao, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtData, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtParcelas, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtDataVencimento, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtValorTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtValorParcela, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtValorParcela, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cmbBoxContasPagar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -323,7 +324,7 @@ public class formContasPagar extends javax.swing.JDialog {
                 .addGap(9, 9, 9)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblStatus)
-                    .addComponent(CmbBoxContaPaga, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cmbBoxContasPagar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(54, 54, 54)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnFechar)
@@ -348,7 +349,7 @@ public class formContasPagar extends javax.swing.JDialog {
     private void btnNovaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovaActionPerformed
         habilitarCampos();
         habilitarBotoes();
-        CmbBoxContaPaga.setSelectedIndex(0);
+        cmbBoxContasPagar.setSelectedIndex(0);
         txtDescricao.requestFocus();
     }//GEN-LAST:event_btnNovaActionPerformed
 
@@ -371,19 +372,15 @@ public class formContasPagar extends javax.swing.JDialog {
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
         if(this.estaEditando==0){
-            ContasPagarControle.cadastraContaPagar(txtDescricao.getText(), txtData.getText(), Integer.parseInt(txtParcelas.getText()), txtDataVencimento.getText(), Float.parseFloat(txtValorTotal.getText()), Float.parseFloat(txtValorParcela.getText()), CmbBoxContaPaga.getItemAt(CmbBoxContaPaga.getSelectedIndex()));
+            ContasPagarControle.cadastraContaPagar(txtDescricao.getText(), txtData.getText(), Integer.parseInt(txtParcelas.getText()), txtDataVencimento.getText(), Float.parseFloat(txtValorTotal.getText()), Float.parseFloat(txtValorParcela.getText()), cmbBoxContasPagar.getItemAt(cmbBoxContasPagar.getSelectedIndex()));
         }else{
-            ContasPagarControle.editarContaPagar(txtDescricao.getText(), txtData.getText(), Integer.parseInt(txtParcelas.getText()), txtDataVencimento.getText(),Float.parseFloat(txtValorTotal.getText()) ,Float.parseFloat(txtValorParcela.getText()), CmbBoxContaPaga.getItemAt(CmbBoxContaPaga.getSelectedIndex()), tabelaContaPagar.getSelectedRow());
+            ContasPagarControle.editarContaPagar(txtDescricao.getText(), txtData.getText(), Integer.parseInt(txtParcelas.getText()), txtDataVencimento.getText(),Float.parseFloat(txtValorTotal.getText()) ,Float.parseFloat(txtValorParcela.getText()), cmbBoxContasPagar.getItemAt(cmbBoxContasPagar.getSelectedIndex()), tabelaContaPagar.getSelectedRow());
             this.estaEditando = 0;
         }
         desabilitarCampos();
         desabilitarBotoes();
         ConsultoraControle.preencherTabela(tabelaContaPagar, Dados.listaConsultoras);
     }//GEN-LAST:event_btnSalvarActionPerformed
-
-    private void CmbBoxContaPagaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CmbBoxContaPagaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_CmbBoxContaPagaActionPerformed
 
     private void btnNovaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnNovaMouseEntered
 
@@ -416,6 +413,10 @@ public class formContasPagar extends javax.swing.JDialog {
     private void txtParcelasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtParcelasActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtParcelasActionPerformed
+
+    private void cmbBoxContasPagarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbBoxContasPagarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cmbBoxContasPagarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -463,12 +464,12 @@ public class formContasPagar extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<Status> CmbBoxContaPaga;
     private javax.swing.JButton btnCancelar;
     private javax.swing.JButton btnEditar;
     private javax.swing.JButton btnFechar;
     private javax.swing.JButton btnNova;
     private javax.swing.JButton btnSalvar;
+    private javax.swing.JComboBox<Situacao> cmbBoxContasPagar;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblCodigo;
     private javax.swing.JLabel lblCodigo1;

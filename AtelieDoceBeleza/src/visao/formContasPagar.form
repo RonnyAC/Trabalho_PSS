@@ -65,7 +65,6 @@
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="CmbBoxContaPaga" min="-2" max="-2" attributes="0"/>
                   <Component id="txtCodigo" alignment="0" min="-2" pref="100" max="-2" attributes="0"/>
                   <Component id="txtDescricao" alignment="0" min="-2" pref="100" max="-2" attributes="0"/>
                   <Component id="txtData" alignment="0" min="-2" pref="100" max="-2" attributes="0"/>
@@ -73,6 +72,7 @@
                   <Component id="txtDataVencimento" alignment="0" min="-2" pref="100" max="-2" attributes="0"/>
                   <Component id="txtValorTotal" alignment="0" min="-2" pref="100" max="-2" attributes="0"/>
                   <Component id="txtValorParcela" alignment="0" min="-2" pref="100" max="-2" attributes="0"/>
+                  <Component id="cmbBoxContasPagar" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="32767" attributes="0"/>
           </Group>
@@ -121,7 +121,7 @@
               <EmptySpace min="-2" pref="9" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="lblStatus" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="CmbBoxContaPaga" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="cmbBoxContasPagar" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="54" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -266,15 +266,6 @@
         <Property name="text" type="java.lang.String" value="Conta Paga:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JComboBox" name="CmbBoxContaPaga">
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="CmbBoxContaPagaActionPerformed"/>
-      </Events>
-      <AuxValues>
-        <AuxValue name="JavaCodeGenerator_SerializeTo" type="java.lang.String" value="formConsultoras_CmbBoxStatus"/>
-        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;Status&gt;"/>
-      </AuxValues>
-    </Component>
     <Component class="javax.swing.JLabel" name="lblCodigo1">
       <Properties>
         <Property name="text" type="java.lang.String" value="Descri&#xe7;&#xe3;o:"/>
@@ -334,6 +325,19 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtValorParcelaActionPerformed"/>
       </Events>
+    </Component>
+    <Component class="javax.swing.JComboBox" name="cmbBoxContasPagar">
+      <Properties>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+          <Connection code="new DefaultComboBoxModel&lt;&gt;(Situacao.values())" type="code"/>
+        </Property>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cmbBoxContasPagarActionPerformed"/>
+      </Events>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;Situacao&gt;"/>
+      </AuxValues>
     </Component>
   </SubComponents>
 </Form>

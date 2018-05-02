@@ -34,6 +34,7 @@ public class formPrincipal extends javax.swing.JFrame {
         menuConsultoras = new javax.swing.JMenu();
         menuManterConsultoras = new javax.swing.JMenuItem();
         menuProdutos = new javax.swing.JMenu();
+        menuManterProdutos = new javax.swing.JMenuItem();
         menuContasPagar = new javax.swing.JMenu();
         menuManterContasPagar = new javax.swing.JMenuItem();
         menuContasReceber = new javax.swing.JMenu();
@@ -61,6 +62,20 @@ public class formPrincipal extends javax.swing.JFrame {
         jMenuBar1.add(menuConsultoras);
 
         menuProdutos.setText("Produtos");
+        menuProdutos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuProdutosActionPerformed(evt);
+            }
+        });
+
+        menuManterProdutos.setText("Manter Produto");
+        menuManterProdutos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuManterProdutosActionPerformed(evt);
+            }
+        });
+        menuProdutos.add(menuManterProdutos);
+
         jMenuBar1.add(menuProdutos);
 
         menuContasPagar.setText("Contas a Pagar");
@@ -126,6 +141,19 @@ public class formPrincipal extends javax.swing.JFrame {
         form.setVisible(true);
     }//GEN-LAST:event_menuManterContasPagarActionPerformed
 
+    private void menuManterProdutosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuManterProdutosActionPerformed
+        formProdutos form = new formProdutos(this, true);
+        form.setDefaultCloseOperation(JDialog.DO_NOTHING_ON_CLOSE);
+        form.setTitle("Produtos");
+        form.setLocationRelativeTo(null);
+        form.setResizable(false);
+        form.setVisible(true);
+    }//GEN-LAST:event_menuManterProdutosActionPerformed
+
+    private void menuProdutosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuProdutosActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_menuProdutosActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -169,6 +197,7 @@ public class formPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenu menuContasReceber;
     private javax.swing.JMenuItem menuManterConsultoras;
     private javax.swing.JMenuItem menuManterContasPagar;
+    private javax.swing.JMenuItem menuManterProdutos;
     private javax.swing.JMenu menuProdutos;
     // End of variables declaration//GEN-END:variables
 }
