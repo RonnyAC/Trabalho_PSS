@@ -6,6 +6,7 @@
 package visao;
 
 import controle.ConsultoraControle;
+import java.awt.Color;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 import modelo.Dados;
@@ -131,6 +132,7 @@ public class formConsultoras extends javax.swing.JDialog {
 
         lblNome.setText("Nome:");
 
+        btnFechar.setBackground(new java.awt.Color(255, 255, 255));
         btnFechar.setText("Fechar");
         btnFechar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -150,13 +152,23 @@ public class formConsultoras extends javax.swing.JDialog {
             }
         });
 
+        btnNova.setBackground(new java.awt.Color(153, 255, 153));
         btnNova.setText("Nova");
+        btnNova.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnNovaMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnNovaMouseExited(evt);
+            }
+        });
         btnNova.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnNovaActionPerformed(evt);
             }
         });
 
+        btnSalvar.setBackground(new java.awt.Color(153, 255, 153));
         btnSalvar.setText("Salvar");
         btnSalvar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -164,6 +176,7 @@ public class formConsultoras extends javax.swing.JDialog {
             }
         });
 
+        btnEditar.setBackground(new java.awt.Color(255, 255, 255));
         btnEditar.setText("Editar");
         btnEditar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -171,6 +184,7 @@ public class formConsultoras extends javax.swing.JDialog {
             }
         });
 
+        btnCancelar.setBackground(new java.awt.Color(255, 102, 102));
         btnCancelar.setText("Cancelar");
         btnCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -230,7 +244,7 @@ public class formConsultoras extends javax.swing.JDialog {
                                     .addComponent(txtCodSite, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
                                     .addComponent(txtDataNascimento))
                                 .addGap(0, 0, Short.MAX_VALUE))))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 442, Short.MAX_VALUE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -325,6 +339,14 @@ public class formConsultoras extends javax.swing.JDialog {
     private void CmbBoxStatusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CmbBoxStatusActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_CmbBoxStatusActionPerformed
+
+    private void btnNovaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnNovaMouseEntered
+
+    }//GEN-LAST:event_btnNovaMouseEntered
+
+    private void btnNovaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnNovaMouseExited
+
+    }//GEN-LAST:event_btnNovaMouseExited
 
     /**
      * @param args the command line arguments
