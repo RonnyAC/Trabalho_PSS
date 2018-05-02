@@ -6,10 +6,8 @@
 package visao;
 
 import controle.ConsultoraControle;
-import java.util.ArrayList;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
-import modelo.Consultora;
 import modelo.Dados;
 import modelo.Status;
 

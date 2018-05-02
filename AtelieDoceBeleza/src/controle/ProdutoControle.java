@@ -5,11 +5,8 @@ import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
-import modelo.Consultora;
-import modelo.DAOConsultora;
 import modelo.DAOProduto;
 import modelo.Produto;
-import modelo.Status;
 
 /**
  *

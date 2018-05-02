@@ -5,7 +5,6 @@
  */
 package visao;
 
-import controle.ConsultoraControle;
 import controle.ProdutoControle;
 import modelo.Dados;
 
