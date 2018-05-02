@@ -31,9 +31,8 @@ public class ProdutoControle {
             linha++;
         }
     }
-   public static void cadastrarProduto(Integer codigo, String descricao , float valorRomance, float valorSugerido){
+   public static void cadastrarProduto(String descricao , float valorRomance, float valorSugerido){
         Produto produto = new Produto();
-        produto.setCodigo(codigo);
         produto.setDescricao(descricao);
         produto.setValorRomance(valorRomance);
         produto.setValorSugerido(valorSugerido);
@@ -42,9 +41,8 @@ public class ProdutoControle {
         JOptionPane.showMessageDialog(null, "Produto Cadastrado!", "Sucesso", 1);
     }
    
-   public static void editarProduto(Integer codigo, String descricao , float valorRomance, float valorSugerido, int posicao){
+   public static void editarProduto(String descricao , float valorRomance, float valorSugerido, int posicao){
         Produto produto = new Produto();
-       produto.setCodigo(codigo);
         produto.setDescricao(descricao);
         produto.setValorRomance(valorRomance);
         produto.setValorSugerido(valorSugerido);
