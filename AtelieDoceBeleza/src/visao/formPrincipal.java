@@ -35,6 +35,7 @@ public class formPrincipal extends javax.swing.JFrame {
         menuManterConsultoras = new javax.swing.JMenuItem();
         menuProdutos = new javax.swing.JMenu();
         menuContasPagar = new javax.swing.JMenu();
+        menuManterContasPagar = new javax.swing.JMenuItem();
         menuContasReceber = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -63,6 +64,20 @@ public class formPrincipal extends javax.swing.JFrame {
         jMenuBar1.add(menuProdutos);
 
         menuContasPagar.setText("Contas a Pagar");
+        menuContasPagar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuContasPagarActionPerformed(evt);
+            }
+        });
+
+        menuManterContasPagar.setText("ContasPagar");
+        menuManterContasPagar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuManterContasPagarActionPerformed(evt);
+            }
+        });
+        menuContasPagar.add(menuManterContasPagar);
+
         jMenuBar1.add(menuContasPagar);
 
         menuContasReceber.setText("Contas a Receber");
@@ -85,17 +100,31 @@ public class formPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void menuConsultorasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuConsultorasActionPerformed
-        
+
     }//GEN-LAST:event_menuConsultorasActionPerformed
 
     private void menuManterConsultorasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuManterConsultorasActionPerformed
         formConsultoras form = new formConsultoras(this, true);
         form.setDefaultCloseOperation(JDialog.DO_NOTHING_ON_CLOSE);
-        form.setTitle("Manter Consultoras");        
+        form.setTitle("Manter Consultoras");
         form.setLocationRelativeTo(null);
         form.setResizable(false);
         form.setVisible(true);
     }//GEN-LAST:event_menuManterConsultorasActionPerformed
+
+
+    private void menuContasPagarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuContasPagarActionPerformed
+
+    }//GEN-LAST:event_menuContasPagarActionPerformed
+
+    private void menuManterContasPagarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuManterContasPagarActionPerformed
+        formContasPagar form = new formContasPagar(this, true);
+        form.setDefaultCloseOperation(JDialog.DO_NOTHING_ON_CLOSE);
+        form.setTitle("Contas a Pagar");
+        form.setLocationRelativeTo(null);
+        form.setResizable(false);
+        form.setVisible(true);
+    }//GEN-LAST:event_menuManterContasPagarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -139,6 +168,7 @@ public class formPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenu menuContasPagar;
     private javax.swing.JMenu menuContasReceber;
     private javax.swing.JMenuItem menuManterConsultoras;
+    private javax.swing.JMenuItem menuManterContasPagar;
     private javax.swing.JMenu menuProdutos;
     // End of variables declaration//GEN-END:variables
 }

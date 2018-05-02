@@ -25,12 +25,12 @@ public class ContasPagar {
         
     }
 
-    public Integer getIdConta() {
+    public Integer codigo() {
         return codigo;
     }
 
-    public void setIdConta(Integer idConta) {
-        this.codigo = idConta;
+    public void codigo(Integer codigo) {
+        this.codigo = codigo;
     }
 
     public String getDescricaoConta() {
