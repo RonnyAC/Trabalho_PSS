@@ -6,7 +6,6 @@
 package visao;
 
 import javax.swing.JDialog;
-import javax.swing.JOptionPane;
 
 /**
  *
