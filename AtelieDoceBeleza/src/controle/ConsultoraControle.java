@@ -12,6 +12,7 @@ import modelo.Consultora;
 import modelo.DAOConsultora;
 import modelo.Status;
 import javax.swing.table.DefaultTableModel;
+import modelo.Dados;
 
 /**
  *
@@ -59,6 +60,15 @@ public class ConsultoraControle {
         DAOConsultora daoConsultoa = new DAOConsultora();
         daoConsultoa.alterar(posicao, consultora);
         JOptionPane.showMessageDialog(null, "Consultora Editada!", "Sucesso", 1);
+    }
+    
+    public static Consultora getConsultoraPorCodigo(int codigo){
+        for(Consultora consultora : Dados.listaConsultoras){
+            if(codigo==consultora.getCodigo()){
+                return consultora;
+            }
+        }
+        return null;
     }
     
 }

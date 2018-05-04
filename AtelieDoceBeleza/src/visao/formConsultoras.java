@@ -308,10 +308,12 @@ public class formConsultoras extends javax.swing.JDialog {
         if(tabelaConsultoras.getSelectedRow()==-1){
             JOptionPane.showMessageDialog(null, "Nenhum registro selecionado.", "Erro", 0);
         }else{
+            txtCodigo.setText(String.valueOf(tabelaConsultoras.getValueAt(tabelaConsultoras.getSelectedRow(), 0)));
             txtNome.setText((String) tabelaConsultoras.getValueAt(tabelaConsultoras.getSelectedRow(), 1));
             txtCpf.setText((String) tabelaConsultoras.getValueAt(tabelaConsultoras.getSelectedRow(), 2));
+            txtCodSite.setText(String.valueOf(tabelaConsultoras.getValueAt(tabelaConsultoras.getSelectedRow(), 3)));
             txtDataNascimento.setText((String) tabelaConsultoras.getValueAt(tabelaConsultoras.getSelectedRow(), 4));
-            //Implementar: CARREGAR DEMAIS CAMPOS PARA OS Textfields
+            CmbBoxStatus.setSelectedItem(ConsultoraControle.getConsultoraPorCodigo(Integer.valueOf(txtCodigo.getText())).getStatus());
             habilitarCampos();
             HabilitarBotoes();
             this.estaEditando = 1;
