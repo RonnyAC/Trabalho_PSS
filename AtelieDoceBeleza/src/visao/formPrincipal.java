@@ -6,6 +6,7 @@
 package visao;
 
 import javax.swing.JDialog;
+import conexao.ConectaSQLite;
 
 /**
  *
@@ -19,6 +20,11 @@ public class formPrincipal extends javax.swing.JFrame {
     public formPrincipal() {
         initComponents();
         setLocationRelativeTo(null);
+        
+        ConectaSQLite conecta = new ConectaSQLite();
+        conecta.conectar();
+        conecta.desconectar();
+        
     }
 
     /**
