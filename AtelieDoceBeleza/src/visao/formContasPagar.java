@@ -379,7 +379,7 @@ public class formContasPagar extends javax.swing.JDialog {
         }
         desabilitarCampos();
         desabilitarBotoes();
-        ConsultoraControle.preencherTabela(tabelaContaPagar, Dados.listaConsultoras);
+        ContasPagarControle.preencherTabela(tabelaContaPagar, Dados.listaContasPagar);
     }//GEN-LAST:event_btnSalvarActionPerformed
 
     private void btnNovaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnNovaMouseEntered

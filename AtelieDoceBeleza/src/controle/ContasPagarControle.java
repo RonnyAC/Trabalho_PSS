@@ -46,6 +46,7 @@ public class ContasPagarControle {
         conta.setDataVencimento(dataVencimento);
         conta.setValorTotal(valorTotal);
         conta.setValorParcela(valorParcela);
+        conta.setContaPaga(contaPaga);
         DAOContasPagar daoContasPagar = new DAOContasPagar();
         daoContasPagar.salvar(conta);
         JOptionPane.showMessageDialog(null, "Conta Cadastrada!", "Sucesso", 1);

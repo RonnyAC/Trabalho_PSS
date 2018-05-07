@@ -19,7 +19,7 @@ public class ContasPagar {
     private String dataVencimento;
     private float valorTotal;
     private float valorParcela;
-    private boolean contaPaga;
+    private Situacao contaPaga;
     
     public ContasPagar(){
         
@@ -81,11 +81,11 @@ public class ContasPagar {
         this.valorParcela = valorParcela;
     }
 
-    public boolean isContaPaga() {
-        return contaPaga;
+    public String getContaPaga() {
+        return contaPaga.toString();
     }
 
-    public void setContaPaga(boolean contaPaga) {
+    public void setContaPaga(Situacao contaPaga) {
         this.contaPaga = contaPaga;
     }
 
