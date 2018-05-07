@@ -17,9 +17,9 @@ import modelo.Status;
  * @author Professional
  */
 public class formConsultoras extends javax.swing.JDialog {
-    
+
     int estaEditando = 0;
-    
+
     /**
      * Creates new form frmConsultoras
      */
@@ -30,18 +30,18 @@ public class formConsultoras extends javax.swing.JDialog {
         desabilitarCampos();
         ConsultoraControle.preencherTabela(tabelaConsultoras, Dados.listaConsultoras);
     }
-    
-    private void desabilitarBotoes(){
+
+    private void desabilitarBotoes() {
         btnCancelar.setEnabled(false);
         btnSalvar.setEnabled(false);
         CmbBoxStatus.setEnabled(false);
         btnNova.setEnabled(true);
         btnEditar.setEnabled(true);
         btnFechar.setEnabled(true);
-        
+
     }
-    
-    private void HabilitarBotoes(){
+
+    private void HabilitarBotoes() {
         btnCancelar.setEnabled(true);
         btnSalvar.setEnabled(true);
         CmbBoxStatus.setEnabled(true);
@@ -49,8 +49,8 @@ public class formConsultoras extends javax.swing.JDialog {
         btnEditar.setEnabled(false);
         btnFechar.setEnabled(false);
     }
-    
-    private void desabilitarCampos(){
+
+    private void desabilitarCampos() {
         txtCodigo.setEnabled(false);
         txtNome.setEnabled(false);
         txtCpf.setEnabled(false);
@@ -62,13 +62,41 @@ public class formConsultoras extends javax.swing.JDialog {
         txtCodSite.setText("");
         txtDataNascimento.setText("");
     }
-    
-    private void habilitarCampos(){
+
+    private void habilitarCampos() {
         txtCodigo.setEnabled(false);
         txtNome.setEnabled(true);
         txtCpf.setEnabled(true);
         txtCodSite.setEnabled(true);
         txtDataNascimento.setEnabled(true);
+    }
+
+    public boolean validaCampos() {
+        if (!(txtNome.getText().length() > 0)) {
+            JOptionPane.showMessageDialog(null, "Informe o Nome da Cosnultora", "Campo Obrigatório", 0);
+            txtNome.requestFocus();
+            return false;
+        }
+        
+        if (!(txtCpf.getText().length() > 0)) {
+            JOptionPane.showMessageDialog(null, "Informe o CPF da Cosnultora", "Campo Obrigatório", 0);
+            txtCpf.requestFocus();
+            return false;
+        }
+        
+        if (!(txtCodSite.getText().length() > 0)) {
+            JOptionPane.showMessageDialog(null, "Informe o Código Romance da Cosnultora", "Campo Obrigatório", 0);
+            txtCodSite.requestFocus();
+            return false;
+        }
+        
+        if (!(txtDataNascimento.getText().length() > 0)) {
+            JOptionPane.showMessageDialog(null, "Informe a Data de Nascimento da Cosnultora", "Campo Obrigatório", 0);
+            txtDataNascimento.requestFocus();
+            return false;
+        }
+        
+        return true;
     }
 
     /**
@@ -305,9 +333,9 @@ public class formConsultoras extends javax.swing.JDialog {
     }//GEN-LAST:event_btnNovaActionPerformed
 
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
-        if(tabelaConsultoras.getSelectedRow()==-1){
+        if (tabelaConsultoras.getSelectedRow() == -1) {
             JOptionPane.showMessageDialog(null, "Nenhum registro selecionado.", "Erro", 0);
-        }else{
+        } else {
             txtCodigo.setText(String.valueOf(tabelaConsultoras.getValueAt(tabelaConsultoras.getSelectedRow(), 0)));
             txtNome.setText((String) tabelaConsultoras.getValueAt(tabelaConsultoras.getSelectedRow(), 1));
             txtCpf.setText((String) tabelaConsultoras.getValueAt(tabelaConsultoras.getSelectedRow(), 2));
@@ -327,15 +355,17 @@ public class formConsultoras extends javax.swing.JDialog {
     }//GEN-LAST:event_btnCancelarActionPerformed
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
-        if(this.estaEditando==0){
-            ConsultoraControle.cadastrarConsultora(txtNome.getText(), txtCpf.getText(), Integer.parseInt(txtCodSite.getText()), txtDataNascimento.getText(), CmbBoxStatus.getItemAt(CmbBoxStatus.getSelectedIndex()));
-        }else{
-            ConsultoraControle.editarConsultora(txtNome.getText(), txtCpf.getText(), Integer.parseInt(txtCodSite.getText()), txtDataNascimento.getText(), CmbBoxStatus.getItemAt(CmbBoxStatus.getSelectedIndex()), tabelaConsultoras.getSelectedRow());
-            this.estaEditando = 0;
+        if (validaCampos()) {
+            if (this.estaEditando == 0) {
+                ConsultoraControle.cadastrarConsultora(txtNome.getText(), txtCpf.getText(), Integer.parseInt(txtCodSite.getText()), txtDataNascimento.getText(), CmbBoxStatus.getItemAt(CmbBoxStatus.getSelectedIndex()));
+            } else {
+                ConsultoraControle.editarConsultora(txtNome.getText(), txtCpf.getText(), Integer.parseInt(txtCodSite.getText()), txtDataNascimento.getText(), CmbBoxStatus.getItemAt(CmbBoxStatus.getSelectedIndex()), tabelaConsultoras.getSelectedRow());
+                this.estaEditando = 0;
+            }
+            desabilitarCampos();
+            desabilitarBotoes();
+            ConsultoraControle.preencherTabela(tabelaConsultoras, Dados.listaConsultoras);
         }
-        desabilitarCampos();
-        desabilitarBotoes();
-        ConsultoraControle.preencherTabela(tabelaConsultoras, Dados.listaConsultoras);
     }//GEN-LAST:event_btnSalvarActionPerformed
 
     private void CmbBoxStatusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CmbBoxStatusActionPerformed
