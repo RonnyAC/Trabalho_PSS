@@ -130,9 +130,12 @@ public class DAOContasPagar {
 
         try {
             resultSet = statement.executeQuery(query);
-            newID = resultSet.getInt("id");
+            while(resultSet.next()){
+                newID = resultSet.getInt(1);
+            }
+            
         } catch (SQLException e) {
-            System.err.println("ID nao encontrado");
+            System.err.println(e.getMessage());
         } finally {
             try {
                 resultSet.close();

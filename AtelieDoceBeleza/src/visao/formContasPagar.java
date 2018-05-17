@@ -29,7 +29,7 @@ public class formContasPagar extends javax.swing.JDialog {
         initComponents();
         desabilitarBotoes();
         desabilitarCampos();
-        ConsultoraControle.preencherTabela(tabelaContaPagar, Dados.listaConsultoras);
+        ContasPagarControle.preencherTabela(tabelaContaPagar);
     }
     
     private void desabilitarBotoes(){
@@ -379,7 +379,7 @@ public class formContasPagar extends javax.swing.JDialog {
         }
         desabilitarCampos();
         desabilitarBotoes();
-        ContasPagarControle.preencherTabela(tabelaContaPagar, Dados.listaContasPagar);
+        tabelaContaPagar = ContasPagarControle.preencherTabela(tabelaContaPagar);
     }//GEN-LAST:event_btnSalvarActionPerformed
 
     private void btnNovaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnNovaMouseEntered

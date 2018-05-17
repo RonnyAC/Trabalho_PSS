@@ -5,6 +5,7 @@
  */
 package controle;
 
+import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
@@ -19,14 +20,19 @@ import modelo.DAOContasPagar;
  */
 public class ContasPagarControle {
 
-    public static void preencherTabela(JTable tabela, List<ContasPagar> listaContas) {
-
+    public static JTable preencherTabela(JTable tabela) {
+        
+        ArrayList<ContasPagar> lista = new ArrayList<>();
+        
         DefaultTableModel dtm = (DefaultTableModel) tabela.getModel();
-        dtm.setRowCount(listaContas.size());
+        DAOContasPagar daoContasPagar = new DAOContasPagar();
+        lista = daoContasPagar.buscar();
+        
+        dtm.setRowCount(lista.size());
         tabela.setModel(dtm);
 
         int linha = 0;
-        for (ContasPagar conta : listaContas) {
+        for (ContasPagar conta : lista) {
             tabela.setValueAt(conta.codigo(), linha, 0);
             tabela.setValueAt(conta.getDescricaoConta(), linha, 1);
             tabela.setValueAt(conta.getDataVencimento(), linha, 2);
@@ -34,6 +40,7 @@ public class ContasPagarControle {
             tabela.setValueAt(conta.getValorParcela(), linha, 4);
             linha++;
         }
+        return tabela;
     }
 
     public static void cadastraContaPagar(String descricaoConta,

@@ -7,6 +7,7 @@ package visao;
 
 import javax.swing.JDialog;
 import conexao.ConectaSQLite;
+import javax.swing.JInternalFrame;
 
 /**
  *
@@ -20,11 +21,11 @@ public class formPrincipal extends javax.swing.JFrame {
     public formPrincipal() {
         initComponents();
         setLocationRelativeTo(null);
-        
+
         ConectaSQLite conecta = new ConectaSQLite();
         conecta.conectar();
         conecta.desconectar();
-        
+
     }
 
     /**
@@ -36,73 +37,290 @@ public class formPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
+        btnContas = new javax.swing.JButton();
+        btnConsultoras = new javax.swing.JButton();
+        btnProdutos = new javax.swing.JButton();
+        jTabbedPane1 = new javax.swing.JTabbedPane();
+        jPanel2 = new javax.swing.JPanel();
+        jRadioButton1 = new javax.swing.JRadioButton();
+        jRadioButton2 = new javax.swing.JRadioButton();
+        jRadioButton3 = new javax.swing.JRadioButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tblAcertoConsultoras = new javax.swing.JTable();
+        jPanel3 = new javax.swing.JPanel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTable2 = new javax.swing.JTable();
+        jRadioButton4 = new javax.swing.JRadioButton();
+        jRadioButton5 = new javax.swing.JRadioButton();
+        jRadioButton6 = new javax.swing.JRadioButton();
+        jPanel4 = new javax.swing.JPanel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jTable3 = new javax.swing.JTable();
+        jRadioButton7 = new javax.swing.JRadioButton();
+        jRadioButton8 = new javax.swing.JRadioButton();
+        jRadioButton9 = new javax.swing.JRadioButton();
         jMenuBar1 = new javax.swing.JMenuBar();
-        menuConsultoras = new javax.swing.JMenu();
-        menuManterConsultoras = new javax.swing.JMenuItem();
-        menuProdutos = new javax.swing.JMenu();
-        menuManterProdutos = new javax.swing.JMenuItem();
-        menuContasPagar = new javax.swing.JMenu();
-        menuManterContasPagar = new javax.swing.JMenuItem();
-        menuContasReceber = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Sistema Atliê Doce Beleza");
-        setPreferredSize(new java.awt.Dimension(500, 400));
         setResizable(false);
 
-        menuConsultoras.setText("Consultoras");
-        menuConsultoras.addActionListener(new java.awt.event.ActionListener() {
+        btnContas.setBackground(new java.awt.Color(0, 0, 153));
+        btnContas.setText("Contas");
+        btnContas.setMaximumSize(new java.awt.Dimension(99, 32));
+        btnContas.setMinimumSize(new java.awt.Dimension(99, 32));
+        btnContas.setName(""); // NOI18N
+        btnContas.setPreferredSize(new java.awt.Dimension(99, 32));
+        btnContas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                menuConsultorasActionPerformed(evt);
+                btnContasActionPerformed(evt);
             }
         });
 
-        menuManterConsultoras.setText("Manter Consultoras");
-        menuManterConsultoras.addActionListener(new java.awt.event.ActionListener() {
+        btnConsultoras.setBackground(new java.awt.Color(0, 0, 153));
+        btnConsultoras.setText("Consultoras");
+        btnConsultoras.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                menuManterConsultorasActionPerformed(evt);
-            }
-        });
-        menuConsultoras.add(menuManterConsultoras);
-
-        jMenuBar1.add(menuConsultoras);
-
-        menuProdutos.setText("Produtos");
-        menuProdutos.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                menuProdutosActionPerformed(evt);
+                btnConsultorasActionPerformed(evt);
             }
         });
 
-        menuManterProdutos.setText("Manter Produto");
-        menuManterProdutos.addActionListener(new java.awt.event.ActionListener() {
+        btnProdutos.setBackground(new java.awt.Color(0, 0, 153));
+        btnProdutos.setText("Produtos");
+        btnProdutos.setMaximumSize(new java.awt.Dimension(99, 32));
+        btnProdutos.setMinimumSize(new java.awt.Dimension(99, 32));
+        btnProdutos.setPreferredSize(new java.awt.Dimension(99, 32));
+        btnProdutos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                menuManterProdutosActionPerformed(evt);
-            }
-        });
-        menuProdutos.add(menuManterProdutos);
-
-        jMenuBar1.add(menuProdutos);
-
-        menuContasPagar.setText("Contas a Pagar");
-        menuContasPagar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                menuContasPagarActionPerformed(evt);
+                btnProdutosActionPerformed(evt);
             }
         });
 
-        menuManterContasPagar.setText("ContasPagar");
-        menuManterContasPagar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                menuManterContasPagarActionPerformed(evt);
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(231, 231, 231)
+                .addComponent(btnContas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addGap(16, 16, 16)
+                    .addComponent(btnConsultoras)
+                    .addContainerGap(561, Short.MAX_VALUE)))
+            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addGap(125, 125, 125)
+                    .addComponent(btnProdutos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(452, Short.MAX_VALUE)))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(btnContas, javax.swing.GroupLayout.DEFAULT_SIZE, 74, Short.MAX_VALUE)
+                .addContainerGap())
+            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(btnConsultoras, javax.swing.GroupLayout.DEFAULT_SIZE, 74, Short.MAX_VALUE)
+                    .addContainerGap()))
+            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(btnProdutos, javax.swing.GroupLayout.DEFAULT_SIZE, 74, Short.MAX_VALUE)
+                    .addContainerGap()))
+        );
+
+        jRadioButton1.setText("Todos");
+
+        jRadioButton2.setText("Hoje");
+
+        jRadioButton3.setText("Atrasados");
+
+        tblAcertoConsultoras.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Nome", "Semana", "Data Acerto"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
             }
         });
-        menuContasPagar.add(menuManterContasPagar);
+        jScrollPane1.setViewportView(tblAcertoConsultoras);
+        if (tblAcertoConsultoras.getColumnModel().getColumnCount() > 0) {
+            tblAcertoConsultoras.getColumnModel().getColumn(0).setResizable(false);
+            tblAcertoConsultoras.getColumnModel().getColumn(1).setResizable(false);
+            tblAcertoConsultoras.getColumnModel().getColumn(2).setResizable(false);
+        }
 
-        jMenuBar1.add(menuContasPagar);
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(25, 25, 25)
+                .addComponent(jRadioButton1)
+                .addGap(18, 18, 18)
+                .addComponent(jRadioButton2)
+                .addGap(18, 18, 18)
+                .addComponent(jRadioButton3)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 662, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jRadioButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jRadioButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jRadioButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(77, 77, 77))
+        );
 
-        menuContasReceber.setText("Contas a Receber");
-        jMenuBar1.add(menuContasReceber);
+        jTabbedPane1.addTab("Acertos", jPanel2);
+
+        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                true, true, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane2.setViewportView(jTable2);
+        if (jTable2.getColumnModel().getColumnCount() > 0) {
+            jTable2.getColumnModel().getColumn(0).setResizable(false);
+            jTable2.getColumnModel().getColumn(1).setResizable(false);
+            jTable2.getColumnModel().getColumn(2).setResizable(false);
+        }
+
+        jRadioButton4.setText("Atrasados");
+        jRadioButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButton4ActionPerformed(evt);
+            }
+        });
+
+        jRadioButton5.setText("Hoje");
+
+        jRadioButton6.setText("Todos");
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(25, 25, 25)
+                .addComponent(jRadioButton6)
+                .addGap(18, 18, 18)
+                .addComponent(jRadioButton5)
+                .addGap(18, 18, 18)
+                .addComponent(jRadioButton4)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 662, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jRadioButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jRadioButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jRadioButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(76, 76, 76))
+        );
+
+        jTabbedPane1.addTab("Contas a pagar", jPanel3);
+
+        jTable3.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                true, true, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane3.setViewportView(jTable3);
+        if (jTable3.getColumnModel().getColumnCount() > 0) {
+            jTable3.getColumnModel().getColumn(0).setResizable(false);
+            jTable3.getColumnModel().getColumn(1).setResizable(false);
+            jTable3.getColumnModel().getColumn(2).setResizable(false);
+        }
+
+        jRadioButton7.setText("Atrasados");
+
+        jRadioButton8.setText("Hoje");
+
+        jRadioButton9.setText("Todos");
+
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGap(25, 25, 25)
+                .addComponent(jRadioButton9)
+                .addGap(18, 18, 18)
+                .addComponent(jRadioButton8)
+                .addGap(18, 18, 18)
+                .addComponent(jRadioButton7)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 662, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jRadioButton9, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jRadioButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jRadioButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(78, 78, 78))
+        );
+
+        jTabbedPane1.addTab("Contas a receber", jPanel4);
 
         setJMenuBar(jMenuBar1);
 
@@ -110,55 +328,60 @@ public class formPrincipal extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jTabbedPane1)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 281, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 295, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void menuConsultorasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuConsultorasActionPerformed
 
-    }//GEN-LAST:event_menuConsultorasActionPerformed
-
-    private void menuManterConsultorasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuManterConsultorasActionPerformed
-        formConsultoras form = new formConsultoras(this, true);
-        form.setDefaultCloseOperation(JDialog.DO_NOTHING_ON_CLOSE);
-        form.setTitle("Manter Consultoras");
+    private void btnContasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnContasActionPerformed
+        // TODO add your handling code here:                
+        formContas form = formContas.getInstancia();
+        
+        form.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+        form.setTitle("Contas");
         form.setLocationRelativeTo(null);
         form.setResizable(false);
         form.setVisible(true);
-    }//GEN-LAST:event_menuManterConsultorasActionPerformed
+    }//GEN-LAST:event_btnContasActionPerformed
 
+    private void jRadioButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jRadioButton4ActionPerformed
 
-    private void menuContasPagarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuContasPagarActionPerformed
-
-    }//GEN-LAST:event_menuContasPagarActionPerformed
-
-    private void menuManterContasPagarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuManterContasPagarActionPerformed
-        formContasPagar form = new formContasPagar(this, true);
-        form.setDefaultCloseOperation(JDialog.DO_NOTHING_ON_CLOSE);
-        form.setTitle("Contas a Pagar");
-        form.setLocationRelativeTo(null);
-        form.setResizable(false);
-        form.setVisible(true);
-    }//GEN-LAST:event_menuManterContasPagarActionPerformed
-
-    private void menuManterProdutosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuManterProdutosActionPerformed
+    private void btnProdutosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProdutosActionPerformed
+        // TODO add your handling code here:
         formProdutos form = new formProdutos(this, true);
         form.setDefaultCloseOperation(JDialog.DO_NOTHING_ON_CLOSE);
         form.setTitle("Produtos");
         form.setLocationRelativeTo(null);
         form.setResizable(false);
         form.setVisible(true);
-    }//GEN-LAST:event_menuManterProdutosActionPerformed
+    }//GEN-LAST:event_btnProdutosActionPerformed
 
-    private void menuProdutosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuProdutosActionPerformed
+    private void btnConsultorasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultorasActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_menuProdutosActionPerformed
+        formConsultoras form = new formConsultoras(this, true);
+        form.setDefaultCloseOperation(JDialog.DO_NOTHING_ON_CLOSE);
+        form.setTitle("Manter Consultoras");
+        form.setLocationRelativeTo(null);
+        form.setResizable(false);
+        form.setVisible(true);
+    }//GEN-LAST:event_btnConsultorasActionPerformed
 
     /**
      * @param args the command line arguments
@@ -197,13 +420,29 @@ public class formPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnConsultoras;
+    private javax.swing.JButton btnContas;
+    private javax.swing.JButton btnProdutos;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenu menuConsultoras;
-    private javax.swing.JMenu menuContasPagar;
-    private javax.swing.JMenu menuContasReceber;
-    private javax.swing.JMenuItem menuManterConsultoras;
-    private javax.swing.JMenuItem menuManterContasPagar;
-    private javax.swing.JMenuItem menuManterProdutos;
-    private javax.swing.JMenu menuProdutos;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
+    private javax.swing.JRadioButton jRadioButton1;
+    private javax.swing.JRadioButton jRadioButton2;
+    private javax.swing.JRadioButton jRadioButton3;
+    private javax.swing.JRadioButton jRadioButton4;
+    private javax.swing.JRadioButton jRadioButton5;
+    private javax.swing.JRadioButton jRadioButton6;
+    private javax.swing.JRadioButton jRadioButton7;
+    private javax.swing.JRadioButton jRadioButton8;
+    private javax.swing.JRadioButton jRadioButton9;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JTable jTable2;
+    private javax.swing.JTable jTable3;
+    private javax.swing.JTable tblAcertoConsultoras;
     // End of variables declaration//GEN-END:variables
 }
