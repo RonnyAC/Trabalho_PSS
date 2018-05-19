@@ -190,6 +190,7 @@ public class formProdutos extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnFecharActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFecharActionPerformed
+        System.out.println("Botão pressionado");
         dispose();
     }//GEN-LAST:event_btnFecharActionPerformed
 

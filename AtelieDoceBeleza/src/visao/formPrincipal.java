@@ -352,6 +352,8 @@ public class formPrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:                
         formContas form = formContas.getInstancia();
         
+        
+        
         form.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
         form.setTitle("Contas");
         form.setLocationRelativeTo(null);
@@ -365,8 +367,9 @@ public class formPrincipal extends javax.swing.JFrame {
 
     private void btnProdutosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProdutosActionPerformed
         // TODO add your handling code here:
-        formProdutos form = new formProdutos(this, true);
-        form.setDefaultCloseOperation(JDialog.DO_NOTHING_ON_CLOSE);
+        formProduto form = formProduto.getInstacia();
+        
+        form.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
         form.setTitle("Produtos");
         form.setLocationRelativeTo(null);
         form.setResizable(false);
