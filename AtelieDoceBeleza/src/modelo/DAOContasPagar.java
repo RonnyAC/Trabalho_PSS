@@ -137,6 +137,7 @@ public class DAOContasPagar {
         } catch (SQLException e) {
             System.err.println(e.getMessage());
         } finally {
+            
             try {
                 resultSet.close();
                 statement.close();
