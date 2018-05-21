@@ -352,13 +352,6 @@ public class formPrincipal extends javax.swing.JFrame {
     private void btnContasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnContasActionPerformed
         // TODO add your handling code here:                
         formContas form = formContas.getInstancia();
-<<<<<<< Updated upstream
-        
-        
-        
-=======
-              
->>>>>>> Stashed changes
         form.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
         form.setTitle("Contas");
         form.setLocationRelativeTo(null);
