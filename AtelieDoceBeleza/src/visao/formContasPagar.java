@@ -5,12 +5,8 @@
  */
 package visao;
 
-import controle.ConsultoraControle;
 import controle.ContasPagarControle;
-import java.awt.Color;
 import javax.swing.DefaultComboBoxModel;
-import javax.swing.JOptionPane;
-import modelo.Dados;
 import modelo.Situacao;
 
 /**
@@ -23,13 +19,15 @@ public class formContasPagar extends javax.swing.JDialog {
     
     /**
      * Creates new form frmConsultoras
+     * @param parent
+     * @param modal
      */
+    
     public formContasPagar(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
         desabilitarBotoes();
         desabilitarCampos();
-        ContasPagarControle.preencherTabela(tabelaContaPagar);
     }
     
     private void desabilitarBotoes(){
@@ -79,8 +77,6 @@ public class formContasPagar extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jScrollPane1 = new javax.swing.JScrollPane();
-        tabelaContaPagar = new javax.swing.JTable();
         lblCodigo = new javax.swing.JLabel();
         btnFechar = new javax.swing.JButton();
         txtCodigo = new javax.swing.JTextField();
@@ -104,28 +100,6 @@ public class formContasPagar extends javax.swing.JDialog {
         cmbBoxContasPagar = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-
-        tabelaContaPagar.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "codigo", "Descricao", "Data Venc.", "Parcelas", "Valor Parcela"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.Float.class
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-        });
-        tabelaContaPagar.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-        jScrollPane1.setViewportView(tabelaContaPagar);
-        if (tabelaContaPagar.getColumnModel().getColumnCount() > 0) {
-            tabelaContaPagar.getColumnModel().getColumn(1).setResizable(false);
-        }
 
         lblCodigo.setText("Código:");
 
@@ -245,19 +219,16 @@ public class formContasPagar extends javax.swing.JDialog {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(btnNova)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnSalvar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnEditar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnCancelar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnFechar))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 442, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(btnNova)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnSalvar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnEditar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnCancelar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 81, Short.MAX_VALUE)
+                .addComponent(btnFechar)
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
@@ -291,9 +262,7 @@ public class formContasPagar extends javax.swing.JDialog {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(163, 163, 163)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblCodigo))
@@ -354,14 +323,14 @@ public class formContasPagar extends javax.swing.JDialog {
     }//GEN-LAST:event_btnNovaActionPerformed
 
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
-        if(tabelaContaPagar.getSelectedRow()==-1){
-            JOptionPane.showMessageDialog(null, "Nenhum registro selecionado.", "Erro", 0);
-        }else{
-            //Implementar: CARREGAR DEMAIS CAMPOS PARA OS Textfields
-            habilitarCampos();
-            habilitarBotoes();
-            this.estaEditando = 1;
-        }
+//        if(tabelaContaPagar.getSelectedRow()==-1){
+//            JOptionPane.showMessageDialog(null, "Nenhum registro selecionado.", "Erro", 0);
+//        }else{
+//            //Implementar: CARREGAR DEMAIS CAMPOS PARA OS Textfields
+//            habilitarCampos();
+//            habilitarBotoes();
+//            this.estaEditando = 1;
+//        }
     }//GEN-LAST:event_btnEditarActionPerformed
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
@@ -371,15 +340,14 @@ public class formContasPagar extends javax.swing.JDialog {
     }//GEN-LAST:event_btnCancelarActionPerformed
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
-        if(this.estaEditando==0){
+        if(this.estaEditando == 0){
             ContasPagarControle.cadastraContaPagar(txtDescricao.getText(), txtData.getText(), Integer.parseInt(txtParcelas.getText()), txtDataVencimento.getText(), Float.parseFloat(txtValorTotal.getText()), Float.parseFloat(txtValorParcela.getText()), cmbBoxContasPagar.getItemAt(cmbBoxContasPagar.getSelectedIndex()));
         }else{
-            ContasPagarControle.editarContaPagar(txtDescricao.getText(), txtData.getText(), Integer.parseInt(txtParcelas.getText()), txtDataVencimento.getText(),Float.parseFloat(txtValorTotal.getText()) ,Float.parseFloat(txtValorParcela.getText()), cmbBoxContasPagar.getItemAt(cmbBoxContasPagar.getSelectedIndex()), tabelaContaPagar.getSelectedRow());
+//            ContasPagarControle.editarContaPagar(txtDescricao.getText(), txtData.getText(), Integer.parseInt(txtParcelas.getText()), txtDataVencimento.getText(),Float.parseFloat(txtValorTotal.getText()) ,Float.parseFloat(txtValorParcela.getText()), cmbBoxContasPagar.getItemAt(cmbBoxContasPagar.getSelectedIndex()), tabelaContaPagar.getSelectedRow());
             this.estaEditando = 0;
         }
         desabilitarCampos();
         desabilitarBotoes();
-        tabelaContaPagar = ContasPagarControle.preencherTabela(tabelaContaPagar);
     }//GEN-LAST:event_btnSalvarActionPerformed
 
     private void btnNovaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnNovaMouseEntered
@@ -470,7 +438,6 @@ public class formContasPagar extends javax.swing.JDialog {
     private javax.swing.JButton btnNova;
     private javax.swing.JButton btnSalvar;
     private javax.swing.JComboBox<Situacao> cmbBoxContasPagar;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblCodigo;
     private javax.swing.JLabel lblCodigo1;
     private javax.swing.JLabel lblCodigo2;
@@ -479,7 +446,6 @@ public class formContasPagar extends javax.swing.JDialog {
     private javax.swing.JLabel lblCodigo5;
     private javax.swing.JLabel lblCodigo6;
     private javax.swing.JLabel lblStatus;
-    private javax.swing.JTable tabelaContaPagar;
     private javax.swing.JTextField txtCodigo;
     private javax.swing.JTextField txtData;
     private javax.swing.JTextField txtDataVencimento;

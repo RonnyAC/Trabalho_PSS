@@ -6,14 +6,23 @@
 package visao;
 
 import controle.ContasPagarControle;
+import java.text.ParseException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JDialog;
 import javax.swing.text.MaskFormatter;
+import util.NumerosDecimais;
 
 /**
  *
  * @author Ronny
  */
 public class formContas extends javax.swing.JFrame {
+
+    private MaskFormatter ftmDataInicial;
+    private MaskFormatter ftmDataFinal;
+    private MaskFormatter ftmValorInicial;
+    private MaskFormatter ftmValorFinal;
 
     private static formContas instancia;
 
@@ -23,14 +32,15 @@ public class formContas extends javax.swing.JFrame {
     private formContas() {
         initComponents();
         ContasPagarControle.preencherTabela(tblContas);
+        formatarCampos();
 
     }
 
     public static synchronized formContas getInstancia() {
         if (instancia == null) {
-            instancia = new formContas();            
+            instancia = new formContas();
         }
-        
+
         return instancia;
     }
 
@@ -45,16 +55,22 @@ public class formContas extends javax.swing.JFrame {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         tblContas = new javax.swing.JTable();
-        jTextField2 = new javax.swing.JTextField();
-        frtDataInicial = new javax.swing.JFormattedTextField();
-        jFormattedTextField2 = new javax.swing.JFormattedTextField();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
+        txtDescricao = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         btnARceber = new javax.swing.JButton();
         btnAPagar = new javax.swing.JButton();
         btnDetalhes = new javax.swing.JButton();
         btnFechar = new javax.swing.JButton();
+        ftxtDataInicial = new javax.swing.JFormattedTextField();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        ftxtDataFinal = new javax.swing.JFormattedTextField();
+        ftxtValorInicial = new javax.swing.JFormattedTextField();
+        jLabel3 = new javax.swing.JLabel();
+        ftxtValorFinal = new javax.swing.JFormattedTextField();
+        jLabel4 = new javax.swing.JLabel();
+        jRadioButton1 = new javax.swing.JRadioButton();
+        jRadioButton2 = new javax.swing.JRadioButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -81,18 +97,14 @@ public class formContas extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(tblContas);
 
-        jTextField2.setText("DESCRIÇÃO");
-
-        frtDataInicial.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter()));
-        frtDataInicial.setText("dd/MM/yyyy");
-
-        jFormattedTextField2.setText("DATA");
-
-        jTextField1.setText("valor");
-
-        jTextField3.setText("valor");
+        txtDescricao.setText("DESCRIÇÃO");
 
         jButton1.setText("Pesquisar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         btnARceber.setText("A receber");
         btnARceber.addActionListener(new java.awt.event.ActionListener() {
@@ -107,32 +119,32 @@ public class formContas extends javax.swing.JFrame {
 
         btnFechar.setText("Fechar");
 
+        ftxtDataInicial.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ftxtDataInicialActionPerformed(evt);
+            }
+        });
+
+        jLabel1.setText("De:");
+
+        jLabel2.setText("Até:");
+
+        jLabel3.setText("De:");
+
+        jLabel4.setText("Até");
+
+        jRadioButton1.setText("A Pagar");
+
+        jRadioButton2.setText("A Receber");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 475, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jButton1))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(jFormattedTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 265, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(frtDataInicial, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(0, 0, Short.MAX_VALUE)))
-                        .addGap(73, 73, 73))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(btnARceber)
                         .addGap(18, 18, 18)
@@ -141,29 +153,65 @@ public class formContas extends javax.swing.JFrame {
                         .addComponent(btnDetalhes)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnFechar)
-                        .addContainerGap())))
+                        .addContainerGap())
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(6, 6, 6)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(6, 6, 6)
+                                        .addComponent(jLabel1))
+                                    .addComponent(ftxtDataInicial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(ftxtValorInicial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel3))
+                                .addGap(92, 92, 92)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel2)
+                                    .addComponent(ftxtDataFinal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel4)
+                                    .addComponent(ftxtValorFinal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(txtDescricao, javax.swing.GroupLayout.PREFERRED_SIZE, 265, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jRadioButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jRadioButton2)))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton1)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(frtDataInicial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jFormattedTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtDescricao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jRadioButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jRadioButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(jLabel2))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(ftxtDataInicial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(ftxtDataFinal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jButton1)
+                        .addComponent(ftxtValorInicial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(ftxtValorFinal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jButton1)
-                            .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel3))
+                        .addGap(32, 32, 32)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(56, 56, 56)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnARceber)
@@ -175,6 +223,37 @@ public class formContas extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void formatarCampos() {
+        try {
+            ftmDataInicial = new MaskFormatter("##/##/####");
+            ftmDataInicial.install(ftxtDataInicial);
+            ftmDataInicial.setValidCharacters("0123456789");
+            ftxtDataInicial.setColumns(6);
+
+            ftmDataFinal = new MaskFormatter("##/##/####");
+            ftmDataFinal.install(ftxtDataFinal);
+            ftmDataFinal.setValidCharacters("0123456789");
+            ftxtDataFinal.setColumns(6);
+
+            ftmValorInicial = new MaskFormatter("#######, ##");
+            ftmValorInicial.install(ftxtValorInicial);
+            ftmValorInicial.setValidCharacters("0123456789");
+            ftxtValorInicial.setColumns(6);
+            ftxtValorInicial.setDocument(new NumerosDecimais(8));
+
+            ftmValorFinal = new MaskFormatter("#######, ##");
+            ftmValorFinal.install(ftxtValorFinal);
+            ftmValorFinal.setValidCharacters("0123456789");
+            ftxtValorFinal.setColumns(6);
+            ftxtValorFinal.setDocument(new NumerosDecimais(8));
+
+        } catch (ParseException ex) {
+            Logger.getLogger(formContas.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
+
 
     private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
         // TODO add your handling code here:
@@ -189,6 +268,33 @@ public class formContas extends javax.swing.JFrame {
         form.setResizable(false);
         form.setVisible(true);
     }//GEN-LAST:event_btnARceberActionPerformed
+
+    private void ftxtDataInicialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ftxtDataInicialActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ftxtDataInicialActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        String dataInicial = ftxtDataInicial.getText();
+        String dataFinal = ftxtDataFinal.getText();
+        Double valorIncial;
+        Double valorFinal;
+        if (ftxtValorInicial.getText().equalsIgnoreCase("")) {
+            valorIncial = null;
+        }else{
+            valorIncial = Double.parseDouble(ftxtValorInicial.getText());
+        }
+
+        if (ftxtValorFinal.getText().equalsIgnoreCase("")) {
+            valorFinal = null;
+        }else{
+            valorFinal = Double.parseDouble(ftxtValorFinal.getText());
+        }
+        
+        ContasPagarControle.buscarConta(dataInicial, dataFinal, valorIncial,
+                valorFinal, txtDescricao.getText(), tblContas);
+        
+        System.out.println("Busca Realizada!!!");
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -230,13 +336,19 @@ public class formContas extends javax.swing.JFrame {
     private javax.swing.JButton btnARceber;
     private javax.swing.JButton btnDetalhes;
     private javax.swing.JButton btnFechar;
-    private javax.swing.JFormattedTextField frtDataInicial;
+    private javax.swing.JFormattedTextField ftxtDataFinal;
+    private javax.swing.JFormattedTextField ftxtDataInicial;
+    private javax.swing.JFormattedTextField ftxtValorFinal;
+    private javax.swing.JFormattedTextField ftxtValorInicial;
     private javax.swing.JButton jButton1;
-    private javax.swing.JFormattedTextField jFormattedTextField2;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JRadioButton jRadioButton1;
+    private javax.swing.JRadioButton jRadioButton2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
     private javax.swing.JTable tblContas;
+    private javax.swing.JTextField txtDescricao;
     // End of variables declaration//GEN-END:variables
 }

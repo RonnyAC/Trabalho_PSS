@@ -150,14 +150,12 @@ public class DAOContasPagar {
         return newID;
     }
 
-    public ArrayList<ContasPagar> buscar() {
+    public ArrayList<ContasPagar> buscar(String query) {
         ConectaSQLite conectaSQLite = new ConectaSQLite();
         conectaSQLite.conectar();
         ResultSet resultSet = null;
         Statement statement = null;
         ArrayList<ContasPagar> contas = new ArrayList<>();
-
-        String query = "SELECT * FROM tbl_contas_pagar";
 
         statement = conectaSQLite.criarStatement();
 

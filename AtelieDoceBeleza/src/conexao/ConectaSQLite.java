@@ -34,7 +34,7 @@ public class ConectaSQLite {
 
     public boolean desconectar() {
         try {
-            if(this.conexao.isClosed() == false){
+            if (this.conexao.isClosed() == false) {
                 this.conexao.close();
             }
 
@@ -45,19 +45,19 @@ public class ConectaSQLite {
         System.out.println("Desconectou");
         return true;
     }
-    
-    public Statement criarStatement(){
-        try{
+
+    public Statement criarStatement() {
+        try {
             return this.conexao.createStatement();
-        }catch(SQLException e){
+        } catch (SQLException e) {
             return null;
         }
     }
-    
-    public PreparedStatement criarPreparedStatement(String sql){
-        try{
+
+    public PreparedStatement criarPreparedStatement(String sql) {
+        try {
             return this.conexao.prepareStatement(sql);
-        }catch(SQLException e){
+        } catch (SQLException e) {
             return null;
         }
     }
