@@ -6,27 +6,19 @@
 package visao;
 
 import javax.swing.JDialog;
-import conexao.ConectaSQLite;
-import java.awt.Button;
-import javax.swing.JInternalFrame;
 
 /**
  *
  * @author Professional
  */
-public class formPrincipal extends javax.swing.JFrame {
+public class FrmPrincipal extends javax.swing.JFrame {
 
     /**
      * Creates new form frmPrincipal
      */
-    public formPrincipal() {
+    public FrmPrincipal() {
         initComponents();
         setLocationRelativeTo(null);
-
-        ConectaSQLite conecta = new ConectaSQLite();
-        conecta.conectar();
-        conecta.desconectar();
-
     }
 
     /**
@@ -39,9 +31,11 @@ public class formPrincipal extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        btnContas = new javax.swing.JButton();
+        btnMensagens = new javax.swing.JButton();
         btnConsultoras = new javax.swing.JButton();
         btnProdutos = new javax.swing.JButton();
+        btnContas1 = new javax.swing.JButton();
+        btnSacolas = new javax.swing.JButton();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel2 = new javax.swing.JPanel();
         jRadioButton1 = new javax.swing.JRadioButton();
@@ -67,15 +61,15 @@ public class formPrincipal extends javax.swing.JFrame {
         setTitle("Sistema Atliê Doce Beleza");
         setResizable(false);
 
-        btnContas.setBackground(new java.awt.Color(0, 0, 153));
-        btnContas.setText("Contas");
-        btnContas.setMaximumSize(new java.awt.Dimension(99, 32));
-        btnContas.setMinimumSize(new java.awt.Dimension(99, 32));
-        btnContas.setName(""); // NOI18N
-        btnContas.setPreferredSize(new java.awt.Dimension(99, 32));
-        btnContas.addActionListener(new java.awt.event.ActionListener() {
+        btnMensagens.setBackground(new java.awt.Color(0, 0, 153));
+        btnMensagens.setText("Mensagens");
+        btnMensagens.setMaximumSize(new java.awt.Dimension(99, 32));
+        btnMensagens.setMinimumSize(new java.awt.Dimension(99, 32));
+        btnMensagens.setName(""); // NOI18N
+        btnMensagens.setPreferredSize(new java.awt.Dimension(99, 32));
+        btnMensagens.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnContasActionPerformed(evt);
+                btnMensagensActionPerformed(evt);
             }
         });
 
@@ -98,40 +92,64 @@ public class formPrincipal extends javax.swing.JFrame {
             }
         });
 
+        btnContas1.setBackground(new java.awt.Color(0, 0, 153));
+        btnContas1.setText("Contas");
+        btnContas1.setMaximumSize(new java.awt.Dimension(99, 32));
+        btnContas1.setMinimumSize(new java.awt.Dimension(99, 32));
+        btnContas1.setName(""); // NOI18N
+        btnContas1.setPreferredSize(new java.awt.Dimension(99, 32));
+        btnContas1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnContas1ActionPerformed(evt);
+            }
+        });
+
+        btnSacolas.setBackground(new java.awt.Color(0, 0, 153));
+        btnSacolas.setText("Sacolas");
+        btnSacolas.setMaximumSize(new java.awt.Dimension(99, 32));
+        btnSacolas.setMinimumSize(new java.awt.Dimension(99, 32));
+        btnSacolas.setName(""); // NOI18N
+        btnSacolas.setPreferredSize(new java.awt.Dimension(99, 32));
+        btnSacolas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSacolasActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(231, 231, 231)
-                .addComponent(btnContas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnProdutos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnContas1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnSacolas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(124, 124, 124)
+                .addComponent(btnMensagens, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel1Layout.createSequentialGroup()
                     .addGap(16, 16, 16)
                     .addComponent(btnConsultoras)
                     .addContainerGap(561, Short.MAX_VALUE)))
-            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel1Layout.createSequentialGroup()
-                    .addGap(125, 125, 125)
-                    .addComponent(btnProdutos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(452, Short.MAX_VALUE)))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(btnContas, javax.swing.GroupLayout.DEFAULT_SIZE, 74, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnMensagens, javax.swing.GroupLayout.DEFAULT_SIZE, 74, Short.MAX_VALUE)
+                    .addComponent(btnContas1, javax.swing.GroupLayout.DEFAULT_SIZE, 74, Short.MAX_VALUE)
+                    .addComponent(btnProdutos, javax.swing.GroupLayout.DEFAULT_SIZE, 74, Short.MAX_VALUE)
+                    .addComponent(btnSacolas, javax.swing.GroupLayout.DEFAULT_SIZE, 74, Short.MAX_VALUE))
                 .addContainerGap())
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel1Layout.createSequentialGroup()
                     .addContainerGap()
                     .addComponent(btnConsultoras, javax.swing.GroupLayout.DEFAULT_SIZE, 74, Short.MAX_VALUE)
-                    .addContainerGap()))
-            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel1Layout.createSequentialGroup()
-                    .addContainerGap()
-                    .addComponent(btnProdutos, javax.swing.GroupLayout.DEFAULT_SIZE, 74, Short.MAX_VALUE)
                     .addContainerGap()))
         );
 
@@ -349,15 +367,17 @@ public class formPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
 
-    private void btnContasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnContasActionPerformed
+    private void btnMensagensActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMensagensActionPerformed
         // TODO add your handling code here:                
-        formContas form = formContas.getInstancia();
+        
+        FrmMensagem form = FrmMensagem.getInstancia();
+
         form.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
-        form.setTitle("Contas");
+        form.setTitle("Mensagens");
         form.setLocationRelativeTo(null);
         form.setResizable(false);
         form.setVisible(true);
-    }//GEN-LAST:event_btnContasActionPerformed
+    }//GEN-LAST:event_btnMensagensActionPerformed
 
     private void jRadioButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton4ActionPerformed
         // TODO add your handling code here:
@@ -365,8 +385,8 @@ public class formPrincipal extends javax.swing.JFrame {
 
     private void btnProdutosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProdutosActionPerformed
         // TODO add your handling code here:
-        formProduto form = formProduto.getInstacia();
-        
+        FrmProduto form = FrmProduto.getInstacia();
+
         form.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
         form.setTitle("Produtos");
         form.setLocationRelativeTo(null);
@@ -376,13 +396,32 @@ public class formPrincipal extends javax.swing.JFrame {
 
     private void btnConsultorasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultorasActionPerformed
         // TODO add your handling code here:
-        formConsultoras form = new formConsultoras(this, true);
-        form.setDefaultCloseOperation(JDialog.DO_NOTHING_ON_CLOSE);
+        FrmConsultoras form = FrmConsultoras.getinstance();
+        
+        form.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
         form.setTitle("Manter Consultoras");
         form.setLocationRelativeTo(null);
         form.setResizable(false);
         form.setVisible(true);
     }//GEN-LAST:event_btnConsultorasActionPerformed
+
+    private void btnContas1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnContas1ActionPerformed
+        FrmContas form = FrmContas.getInstancia();
+        form.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+        form.setTitle("Contas");
+        form.setLocationRelativeTo(null);
+        form.setResizable(false);
+        form.setVisible(true);
+    }//GEN-LAST:event_btnContas1ActionPerformed
+
+    private void btnSacolasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSacolasActionPerformed
+        FrmSacolas form = FrmSacolas.getInstancia();
+        form.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+        form.setTitle("Produtos");
+        form.setLocationRelativeTo(null);
+        form.setResizable(false);
+        form.setVisible(true);
+    }//GEN-LAST:event_btnSacolasActionPerformed
 
     /**
      * @param args the command line arguments
@@ -401,29 +440,31 @@ public class formPrincipal extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(formPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(formPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(formPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(formPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new formPrincipal().setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            new FrmPrincipal().setVisible(true);
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnConsultoras;
-    private javax.swing.JButton btnContas;
+    private javax.swing.JButton btnContas1;
+    private javax.swing.JButton btnMensagens;
     private javax.swing.JButton btnProdutos;
+    private javax.swing.JButton btnSacolas;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;

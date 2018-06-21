@@ -16,19 +16,21 @@ import modelo.Status;
  *
  * @author Professional
  */
-public class formConsultoras extends javax.swing.JDialog {
+public class FrmCadConsultoras extends javax.swing.JDialog {
 
     int estaEditando = 0;
 
     /**
      * Creates new form frmConsultoras
+     * @param parent
+     * @param modal
      */
-    public formConsultoras(java.awt.Frame parent, boolean modal) {
+    public FrmCadConsultoras(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
         desabilitarBotoes();
         desabilitarCampos();
-        ConsultoraControle.preencherTabela(tabelaConsultoras, Dados.listaConsultoras);
+        //ConsultoraControle.preencherTabela(tabelaConsultoras, Dados.listaConsultoras);
     }
 
     private void desabilitarBotoes() {
@@ -108,8 +110,6 @@ public class formConsultoras extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jScrollPane1 = new javax.swing.JScrollPane();
-        tabelaConsultoras = new javax.swing.JTable();
         lblCodigo = new javax.swing.JLabel();
         lblNome = new javax.swing.JLabel();
         btnFechar = new javax.swing.JButton();
@@ -127,34 +127,10 @@ public class formConsultoras extends javax.swing.JDialog {
         btnCancelar = new javax.swing.JButton();
         lblStatus = new javax.swing.JLabel();
         CmbBoxStatus = new javax.swing.JComboBox<>();
+        jLabel1 = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-
-        tabelaConsultoras.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "Código", "Nome", "CPF", "Cód. Site", "Data Nasc.", "Status"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class
-            };
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        tabelaConsultoras.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-        jScrollPane1.setViewportView(tabelaConsultoras);
 
         lblCodigo.setText("Código:");
 
@@ -229,89 +205,85 @@ public class formConsultoras extends javax.swing.JDialog {
             }
         });
 
+        jLabel1.setText("Contatos");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addContainerGap()
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(6, 6, 6)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(lblCodigo)
+                            .addComponent(lblDataNascimento)
+                            .addComponent(lblStatus))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtDataNascimento, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(CmbBoxStatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(lblCpf)
+                            .addComponent(lblNome)
+                            .addComponent(lblCodSite))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtNome)
+                            .addComponent(txtCpf)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(txtCodSite, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 127, Short.MAX_VALUE))))
+                    .addGroup(layout.createSequentialGroup()
                         .addComponent(btnNova)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnSalvar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnEditar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnCancelar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnFechar))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addGap(10, 10, 10)
-                                    .addComponent(lblDataNascimento))
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                    .addContainerGap()
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(lblCodigo, javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(lblNome, javax.swing.GroupLayout.Alignment.TRAILING))))
-                            .addComponent(lblCpf, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(lblCodSite, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(lblStatus, javax.swing.GroupLayout.Alignment.TRAILING))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(txtCpf, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
-                                .addComponent(txtNome, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(CmbBoxStatus, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(txtCodigo, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(txtCodSite, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
-                                    .addComponent(txtDataNascimento))
-                                .addGap(0, 0, Short.MAX_VALUE))))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 442, Short.MAX_VALUE))
+                        .addComponent(btnFechar)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblCodigo)
-                    .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                     .addComponent(lblNome)
                     .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblDataNascimento)
+                    .addComponent(txtDataNascimento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblCpf)
                     .addComponent(txtCpf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                    .addComponent(lblCodSite)
-                    .addComponent(txtCodSite, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                    .addComponent(lblDataNascimento)
-                    .addComponent(txtDataNascimento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblStatus)
-                    .addComponent(CmbBoxStatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(CmbBoxStatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(lblCodSite)
+                        .addComponent(txtCodSite, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel1)
+                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 99, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnFechar)
                     .addComponent(btnNova)
                     .addComponent(btnSalvar)
                     .addComponent(btnEditar)
-                    .addComponent(btnCancelar))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btnCancelar)
+                    .addComponent(btnFechar))
+                .addContainerGap())
         );
 
         pack();
@@ -333,19 +305,19 @@ public class formConsultoras extends javax.swing.JDialog {
     }//GEN-LAST:event_btnNovaActionPerformed
 
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
-        if (tabelaConsultoras.getSelectedRow() == -1) {
-            JOptionPane.showMessageDialog(null, "Nenhum registro selecionado.", "Erro", 0);
-        } else {
-            txtCodigo.setText(String.valueOf(tabelaConsultoras.getValueAt(tabelaConsultoras.getSelectedRow(), 0)));
-            txtNome.setText((String) tabelaConsultoras.getValueAt(tabelaConsultoras.getSelectedRow(), 1));
-            txtCpf.setText((String) tabelaConsultoras.getValueAt(tabelaConsultoras.getSelectedRow(), 2));
-            txtCodSite.setText(String.valueOf(tabelaConsultoras.getValueAt(tabelaConsultoras.getSelectedRow(), 3)));
-            txtDataNascimento.setText((String) tabelaConsultoras.getValueAt(tabelaConsultoras.getSelectedRow(), 4));
-            CmbBoxStatus.setSelectedItem(ConsultoraControle.getConsultoraPorCodigo(Integer.valueOf(txtCodigo.getText())).getStatus());
-            habilitarCampos();
-            HabilitarBotoes();
-            this.estaEditando = 1;
-        }
+//        if (tabelaConsultoras.getSelectedRow() == -1) {
+//            JOptionPane.showMessageDialog(null, "Nenhum registro selecionado.", "Erro", 0);
+//        } else {
+//            txtCodigo.setText(String.valueOf(tabelaConsultoras.getValueAt(tabelaConsultoras.getSelectedRow(), 0)));
+//            txtNome.setText((String) tabelaConsultoras.getValueAt(tabelaConsultoras.getSelectedRow(), 1));
+//            txtCpf.setText((String) tabelaConsultoras.getValueAt(tabelaConsultoras.getSelectedRow(), 2));
+//            txtCodSite.setText(String.valueOf(tabelaConsultoras.getValueAt(tabelaConsultoras.getSelectedRow(), 3)));
+//            txtDataNascimento.setText((String) tabelaConsultoras.getValueAt(tabelaConsultoras.getSelectedRow(), 4));
+//            CmbBoxStatus.setSelectedItem(ConsultoraControle.getConsultoraPorCodigo(Integer.valueOf(txtCodigo.getText())).getStatus());
+//            habilitarCampos();
+//            HabilitarBotoes();
+//            this.estaEditando = 1;
+//        }
     }//GEN-LAST:event_btnEditarActionPerformed
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
@@ -355,17 +327,17 @@ public class formConsultoras extends javax.swing.JDialog {
     }//GEN-LAST:event_btnCancelarActionPerformed
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
-        if (validaCampos()) {
-            if (this.estaEditando == 0) {
-                ConsultoraControle.cadastrarConsultora(txtNome.getText(), txtCpf.getText(), Integer.parseInt(txtCodSite.getText()), txtDataNascimento.getText(), CmbBoxStatus.getItemAt(CmbBoxStatus.getSelectedIndex()));
-            } else {
-                ConsultoraControle.editarConsultora(txtNome.getText(), txtCpf.getText(), Integer.parseInt(txtCodSite.getText()), txtDataNascimento.getText(), CmbBoxStatus.getItemAt(CmbBoxStatus.getSelectedIndex()), tabelaConsultoras.getSelectedRow());
-                this.estaEditando = 0;
-            }
-            desabilitarCampos();
-            desabilitarBotoes();
-            ConsultoraControle.preencherTabela(tabelaConsultoras, Dados.listaConsultoras);
-        }
+//        if (validaCampos()) {
+//            if (this.estaEditando == 0) {
+//                ConsultoraControle.cadastrarConsultora(txtNome.getText(), txtCpf.getText(), Integer.parseInt(txtCodSite.getText()), txtDataNascimento.getText(), CmbBoxStatus.getItemAt(CmbBoxStatus.getSelectedIndex()));
+//            } else {
+//                ConsultoraControle.editarConsultora(txtNome.getText(), txtCpf.getText(), Integer.parseInt(txtCodSite.getText()), txtDataNascimento.getText(), CmbBoxStatus.getItemAt(CmbBoxStatus.getSelectedIndex()), tabelaConsultoras.getSelectedRow());
+//                this.estaEditando = 0;
+//            }
+//            desabilitarCampos();
+//            desabilitarBotoes();
+//            ConsultoraControle.preencherTabela(tabelaConsultoras, Dados.listaConsultoras);
+//        }
     }//GEN-LAST:event_btnSalvarActionPerformed
 
     private void CmbBoxStatusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CmbBoxStatusActionPerformed
@@ -397,29 +369,33 @@ public class formConsultoras extends javax.swing.JDialog {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(formConsultoras.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmCadConsultoras.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(formConsultoras.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmCadConsultoras.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(formConsultoras.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmCadConsultoras.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(formConsultoras.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmCadConsultoras.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the dialog */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                formConsultoras dialog = new formConsultoras(new javax.swing.JFrame(), true);
-                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
-                    @Override
-                    public void windowClosing(java.awt.event.WindowEvent e) {
-                        System.exit(0);
-                    }
-                });
-                dialog.setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            FrmCadConsultoras dialog = new FrmCadConsultoras(new javax.swing.JFrame(), true);
+            dialog.addWindowListener(new java.awt.event.WindowAdapter() {
+                @Override
+                public void windowClosing(java.awt.event.WindowEvent e) {
+                    System.exit(0);
+                }
+            });
+            dialog.setVisible(true);
         });
     }
 
@@ -430,14 +406,14 @@ public class formConsultoras extends javax.swing.JDialog {
     private javax.swing.JButton btnFechar;
     private javax.swing.JButton btnNova;
     private javax.swing.JButton btnSalvar;
-    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JTextField jTextField1;
     private javax.swing.JLabel lblCodSite;
     private javax.swing.JLabel lblCodigo;
     private javax.swing.JLabel lblCpf;
     private javax.swing.JLabel lblDataNascimento;
     private javax.swing.JLabel lblNome;
     private javax.swing.JLabel lblStatus;
-    private javax.swing.JTable tabelaConsultoras;
     private javax.swing.JTextField txtCodSite;
     private javax.swing.JTextField txtCodigo;
     private javax.swing.JTextField txtCpf;
