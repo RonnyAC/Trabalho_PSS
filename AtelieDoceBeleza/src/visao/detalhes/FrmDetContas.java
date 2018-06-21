@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package visao;
+package visao.detalhes;
 
 import controle.ContasPagarControle;
 import javax.swing.DefaultComboBoxModel;
@@ -13,7 +13,7 @@ import modelo.Situacao;
  *
  * @author Professional
  */
-public class FrmCadContas extends javax.swing.JDialog {
+public class FrmDetContas extends javax.swing.JDialog {
     
     int estaEditando = 0;
     
@@ -23,7 +23,7 @@ public class FrmCadContas extends javax.swing.JDialog {
      * @param modal
      */
     
-    public FrmCadContas(java.awt.Frame parent, boolean modal) {
+    public FrmDetContas(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
         desabilitarBotoes();
@@ -33,8 +33,6 @@ public class FrmCadContas extends javax.swing.JDialog {
     private void desabilitarBotoes(){
         btnCancelar.setEnabled(false);
         btnSalvar.setEnabled(false);
-        cmbBoxContasPagar.setEnabled(false);
-        btnNova.setEnabled(true);
         btnEditar.setEnabled(true);
         btnFechar.setEnabled(true);
         
@@ -43,8 +41,6 @@ public class FrmCadContas extends javax.swing.JDialog {
     private void habilitarBotoes(){
         btnCancelar.setEnabled(true);
         btnSalvar.setEnabled(true);
-        cmbBoxContasPagar.setEnabled(true);
-        btnNova.setEnabled(false);
         btnEditar.setEnabled(false);
         btnFechar.setEnabled(false);
     }
@@ -57,6 +53,7 @@ public class FrmCadContas extends javax.swing.JDialog {
         txtValorParcela.setEnabled(false);
         txtValorTotal.setEnabled(false);       
         txtData.setEnabled(false);
+        cmbBoxContasPagar.setEnabled(false);
     }
     
     private void habilitarCampos(){
@@ -65,7 +62,8 @@ public class FrmCadContas extends javax.swing.JDialog {
         txtParcelas.setEnabled(true);
         txtValorParcela.setEnabled(true);
         txtValorTotal.setEnabled(true);       
-        txtData.setEnabled(true);        
+        txtData.setEnabled(true);
+        cmbBoxContasPagar.setEnabled(true);        
     }
 
     /**
@@ -80,7 +78,6 @@ public class FrmCadContas extends javax.swing.JDialog {
         lblCodigo = new javax.swing.JLabel();
         btnFechar = new javax.swing.JButton();
         txtCodigo = new javax.swing.JTextField();
-        btnNova = new javax.swing.JButton();
         btnSalvar = new javax.swing.JButton();
         btnEditar = new javax.swing.JButton();
         btnCancelar = new javax.swing.JButton();
@@ -103,7 +100,6 @@ public class FrmCadContas extends javax.swing.JDialog {
 
         lblCodigo.setText("Código:");
 
-        btnFechar.setBackground(new java.awt.Color(255, 255, 255));
         btnFechar.setText("Fechar");
         btnFechar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -117,23 +113,6 @@ public class FrmCadContas extends javax.swing.JDialog {
             }
         });
 
-        btnNova.setBackground(new java.awt.Color(153, 255, 153));
-        btnNova.setText("Nova");
-        btnNova.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btnNovaMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                btnNovaMouseExited(evt);
-            }
-        });
-        btnNova.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnNovaActionPerformed(evt);
-            }
-        });
-
-        btnSalvar.setBackground(new java.awt.Color(153, 255, 153));
         btnSalvar.setText("Salvar");
         btnSalvar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -141,7 +120,6 @@ public class FrmCadContas extends javax.swing.JDialog {
             }
         });
 
-        btnEditar.setBackground(new java.awt.Color(255, 255, 255));
         btnEditar.setText("Editar");
         btnEditar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -149,7 +127,6 @@ public class FrmCadContas extends javax.swing.JDialog {
             }
         });
 
-        btnCancelar.setBackground(new java.awt.Color(255, 102, 102));
         btnCancelar.setText("Cancelar");
         btnCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -221,49 +198,53 @@ public class FrmCadContas extends javax.swing.JDialog {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                        .addGap(15, 15, 15)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblCodigo3, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(lblCodigo, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(lblCodigo2, javax.swing.GroupLayout.Alignment.TRAILING))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtData, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
-                            .addComponent(txtParcelas)
-                            .addComponent(txtCodigo))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lblCodigo1)
-                                    .addComponent(lblCodigo4)
-                                    .addComponent(lblCodigo6))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtDataVencimento)
-                                    .addComponent(txtDescricao)))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(lblCodigo5)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(btnEditar)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(btnCancelar)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
-                                        .addComponent(btnFechar))
-                                    .addComponent(txtValorParcela)
-                                    .addComponent(txtValorTotal)))))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(btnNova)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnSalvar))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(lblStatus)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(cmbBoxContasPagar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(cmbBoxContasPagar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(15, 15, 15)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lblCodigo3, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(lblCodigo, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(lblCodigo2, javax.swing.GroupLayout.Alignment.TRAILING)))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(btnEditar)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(txtData, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
+                                    .addComponent(txtParcelas)
+                                    .addComponent(txtCodigo))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(lblCodigo1)
+                                            .addComponent(lblCodigo4)
+                                            .addComponent(lblCodigo6))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(txtDataVencimento)
+                                            .addComponent(txtDescricao)))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(lblCodigo5)
+                                            .addComponent(btnCancelar))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                                .addGap(69, 69, 69)
+                                                .addComponent(btnFechar))
+                                            .addComponent(txtValorParcela, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
+                                            .addComponent(txtValorTotal)))))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(1, 1, 1)
+                                .addComponent(btnSalvar)))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -297,7 +278,6 @@ public class FrmCadContas extends javax.swing.JDialog {
                 .addGap(44, 44, 44)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnFechar)
-                    .addComponent(btnNova)
                     .addComponent(btnSalvar)
                     .addComponent(btnEditar)
                     .addComponent(btnCancelar))
@@ -315,13 +295,6 @@ public class FrmCadContas extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtCodigoActionPerformed
 
-    private void btnNovaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovaActionPerformed
-        habilitarCampos();
-        habilitarBotoes();
-        cmbBoxContasPagar.setSelectedIndex(0);
-        txtDescricao.requestFocus();
-    }//GEN-LAST:event_btnNovaActionPerformed
-
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
 //        if(tabelaContaPagar.getSelectedRow()==-1){
 //            JOptionPane.showMessageDialog(null, "Nenhum registro selecionado.", "Erro", 0);
@@ -331,6 +304,9 @@ public class FrmCadContas extends javax.swing.JDialog {
 //            habilitarBotoes();
 //            this.estaEditando = 1;
 //        }
+
+    habilitarCampos();
+    habilitarBotoes();
     }//GEN-LAST:event_btnEditarActionPerformed
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
@@ -340,23 +316,16 @@ public class FrmCadContas extends javax.swing.JDialog {
     }//GEN-LAST:event_btnCancelarActionPerformed
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
-        if(this.estaEditando == 0){
-            ContasPagarControle.cadastraContaPagar(txtDescricao.getText(), txtData.getText(), Integer.parseInt(txtParcelas.getText()), txtDataVencimento.getText(), Float.parseFloat(txtValorTotal.getText()), Float.parseFloat(txtValorParcela.getText()), cmbBoxContasPagar.getItemAt(cmbBoxContasPagar.getSelectedIndex()));
-        }else{
-//            ContasPagarControle.editarContaPagar(txtDescricao.getText(), txtData.getText(), Integer.parseInt(txtParcelas.getText()), txtDataVencimento.getText(),Float.parseFloat(txtValorTotal.getText()) ,Float.parseFloat(txtValorParcela.getText()), cmbBoxContasPagar.getItemAt(cmbBoxContasPagar.getSelectedIndex()), tabelaContaPagar.getSelectedRow());
-            this.estaEditando = 0;
-        }
+//        if(this.estaEditando == 0){
+//            ContasPagarControle.cadastraContaPagar(txtDescricao.getText(), txtData.getText(), Integer.parseInt(txtParcelas.getText()), txtDataVencimento.getText(), Float.parseFloat(txtValorTotal.getText()), Float.parseFloat(txtValorParcela.getText()), cmbBoxContasPagar.getItemAt(cmbBoxContasPagar.getSelectedIndex()));
+//        }else{
+////            ContasPagarControle.editarContaPagar(txtDescricao.getText(), txtData.getText(), Integer.parseInt(txtParcelas.getText()), txtDataVencimento.getText(),Float.parseFloat(txtValorTotal.getText()) ,Float.parseFloat(txtValorParcela.getText()), cmbBoxContasPagar.getItemAt(cmbBoxContasPagar.getSelectedIndex()), tabelaContaPagar.getSelectedRow());
+//            this.estaEditando = 0;
+//        }
+        
         desabilitarCampos();
         desabilitarBotoes();
     }//GEN-LAST:event_btnSalvarActionPerformed
-
-    private void btnNovaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnNovaMouseEntered
-
-    }//GEN-LAST:event_btnNovaMouseEntered
-
-    private void btnNovaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnNovaMouseExited
-
-    }//GEN-LAST:event_btnNovaMouseExited
 
     private void txtDescricaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDescricaoActionPerformed
         // TODO add your handling code here:
@@ -402,15 +371,34 @@ public class FrmCadContas extends javax.swing.JDialog {
                     break;
                 }
             }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FrmCadContas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FrmCadContas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FrmCadContas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FrmCadContas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(FrmDetContas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -422,7 +410,7 @@ public class FrmCadContas extends javax.swing.JDialog {
 
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(() -> {
-            FrmCadContas dialog = new FrmCadContas(new javax.swing.JFrame(), true);
+            FrmDetContas dialog = new FrmDetContas(new javax.swing.JFrame(), true);
             dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                 @Override
                 public void windowClosing(java.awt.event.WindowEvent e) {
@@ -437,7 +425,6 @@ public class FrmCadContas extends javax.swing.JDialog {
     private javax.swing.JButton btnCancelar;
     private javax.swing.JButton btnEditar;
     private javax.swing.JButton btnFechar;
-    private javax.swing.JButton btnNova;
     private javax.swing.JButton btnSalvar;
     private javax.swing.JComboBox<Situacao> cmbBoxContasPagar;
     private javax.swing.JLabel lblCodigo;

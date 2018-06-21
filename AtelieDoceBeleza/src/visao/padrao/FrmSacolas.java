@@ -3,10 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package visao;
+package visao.padrao;
 
 import controle.ContasPagarControle;
 import javax.swing.JDialog;
+import visao.cadastro.FrmCadSacola;
 
 /**
  *

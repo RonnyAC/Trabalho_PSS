@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package visao;
+package visao.padrao;
 
 import controle.ContasPagarControle;
 import java.text.ParseException;
@@ -12,6 +12,8 @@ import java.util.logging.Logger;
 import javax.swing.JDialog;
 import javax.swing.text.MaskFormatter;
 import util.NumerosDecimais;
+import visao.cadastro.FrmCadContas;
+import visao.detalhes.FrmDetContas;
 
 /**
  *
@@ -56,9 +58,8 @@ public class FrmContas extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         tblContas = new javax.swing.JTable();
         txtDescricao = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        btnARceber = new javax.swing.JButton();
-        btnAPagar = new javax.swing.JButton();
+        btnPesquisar = new javax.swing.JButton();
+        btnAdicionar = new javax.swing.JButton();
         btnDetalhes = new javax.swing.JButton();
         btnFechar = new javax.swing.JButton();
         ftxtDataInicial = new javax.swing.JFormattedTextField();
@@ -96,21 +97,19 @@ public class FrmContas extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(tblContas);
 
-        jButton1.setText("Pesquisar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnPesquisar.setText("Pesquisar");
+        btnPesquisar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnPesquisarActionPerformed(evt);
             }
         });
 
-        btnARceber.setText("A receber");
-        btnARceber.addActionListener(new java.awt.event.ActionListener() {
+        btnAdicionar.setText("Adicionar");
+        btnAdicionar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnARceberActionPerformed(evt);
+                btnAdicionarActionPerformed(evt);
             }
         });
-
-        btnAPagar.setText("A pagar");
 
         btnDetalhes.setText("Detalhes");
         btnDetalhes.addActionListener(new java.awt.event.ActionListener() {
@@ -171,12 +170,10 @@ public class FrmContas extends javax.swing.JFrame {
                                     .addComponent(ftxtDataFinal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnARceber)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnAPagar)
-                        .addGap(18, 18, 18)
+                        .addComponent(btnAdicionar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnDetalhes)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 136, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnFechar)
                         .addGap(14, 14, 14))
                     .addGroup(layout.createSequentialGroup()
@@ -184,10 +181,10 @@ public class FrmContas extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtDescricao, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))))
-            .addComponent(jScrollPane1)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 501, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton1)
+                .addComponent(btnPesquisar)
                 .addGap(75, 75, 75))
         );
         layout.setVerticalGroup(
@@ -210,13 +207,12 @@ public class FrmContas extends javax.swing.JFrame {
                     .addComponent(jLabel4)
                     .addComponent(jLabel3))
                 .addGap(12, 12, 12)
-                .addComponent(jButton1)
+                .addComponent(btnPesquisar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnARceber)
-                    .addComponent(btnAPagar)
+                    .addComponent(btnAdicionar)
                     .addComponent(btnDetalhes)
                     .addComponent(btnFechar))
                 .addGap(12, 12, 12))
@@ -261,20 +257,11 @@ public class FrmContas extends javax.swing.JFrame {
         instancia = null;
     }//GEN-LAST:event_formWindowClosed
 
-    private void btnARceberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnARceberActionPerformed
-        FrmCadContas form = new FrmCadContas(this, true);
-        form.setDefaultCloseOperation(JDialog.DO_NOTHING_ON_CLOSE);
-        form.setTitle("Contas a Pagar");
-        form.setLocationRelativeTo(null);
-        form.setResizable(false);
-        form.setVisible(true);
-    }//GEN-LAST:event_btnARceberActionPerformed
-
     private void ftxtDataInicialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ftxtDataInicialActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_ftxtDataInicialActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarActionPerformed
         String dataInicial = ftxtDataInicial.getText();
         String dataFinal = ftxtDataFinal.getText();
         Double valorIncial;
@@ -295,20 +282,30 @@ public class FrmContas extends javax.swing.JFrame {
                 valorFinal, txtDescricao.getText(), tblContas);
 
         System.out.println("Busca Realizada!!!");
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btnPesquisarActionPerformed
 
     private void btnFecharActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFecharActionPerformed
         dispose();
     }//GEN-LAST:event_btnFecharActionPerformed
 
     private void btnDetalhesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDetalhesActionPerformed
-        FrmCadContas form = new FrmCadContas(this, true);
+        FrmDetContas form = new FrmDetContas(this, true);
+        
         form.setDefaultCloseOperation(JDialog.DO_NOTHING_ON_CLOSE);
         form.setTitle("Contas a Pagar");
         form.setLocationRelativeTo(null);
         form.setResizable(false);
         form.setVisible(true);
     }//GEN-LAST:event_btnDetalhesActionPerformed
+
+    private void btnAdicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdicionarActionPerformed
+        FrmCadContas form = new FrmCadContas(this, true);
+        form.setDefaultCloseOperation(JDialog.DO_NOTHING_ON_CLOSE);
+        form.setTitle("Contas a Pagar");
+        form.setLocationRelativeTo(null);
+        form.setResizable(false);
+        form.setVisible(true);
+    }//GEN-LAST:event_btnAdicionarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -349,15 +346,14 @@ public class FrmContas extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnAPagar;
-    private javax.swing.JButton btnARceber;
+    private javax.swing.JButton btnAdicionar;
     private javax.swing.JButton btnDetalhes;
     private javax.swing.JButton btnFechar;
+    private javax.swing.JButton btnPesquisar;
     private javax.swing.JFormattedTextField ftxtDataFinal;
     private javax.swing.JFormattedTextField ftxtDataInicial;
     private javax.swing.JFormattedTextField ftxtValorFinal;
     private javax.swing.JFormattedTextField ftxtValorInicial;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

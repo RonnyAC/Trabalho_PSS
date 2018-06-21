@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package visao;
+package visao.cadastro;
 
 import controle.ConsultoraControle;
 import java.awt.Color;
@@ -28,49 +28,7 @@ public class FrmCadConsultoras extends javax.swing.JDialog {
     public FrmCadConsultoras(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        desabilitarBotoes();
-        desabilitarCampos();
         //ConsultoraControle.preencherTabela(tabelaConsultoras, Dados.listaConsultoras);
-    }
-
-    private void desabilitarBotoes() {
-        btnCancelar.setEnabled(false);
-        btnSalvar.setEnabled(false);
-        CmbBoxStatus.setEnabled(false);
-        btnNova.setEnabled(true);
-        btnEditar.setEnabled(true);
-        btnFechar.setEnabled(true);
-
-    }
-
-    private void HabilitarBotoes() {
-        btnCancelar.setEnabled(true);
-        btnSalvar.setEnabled(true);
-        CmbBoxStatus.setEnabled(true);
-        btnNova.setEnabled(false);
-        btnEditar.setEnabled(false);
-        btnFechar.setEnabled(false);
-    }
-
-    private void desabilitarCampos() {
-        txtCodigo.setEnabled(false);
-        txtNome.setEnabled(false);
-        txtCpf.setEnabled(false);
-        txtCodSite.setEnabled(false);
-        txtDataNascimento.setEnabled(false);
-        txtCodigo.setText("");
-        txtNome.setText("");
-        txtCpf.setText("");
-        txtCodSite.setText("");
-        txtDataNascimento.setText("");
-    }
-
-    private void habilitarCampos() {
-        txtCodigo.setEnabled(false);
-        txtNome.setEnabled(true);
-        txtCpf.setEnabled(true);
-        txtCodSite.setEnabled(true);
-        txtDataNascimento.setEnabled(true);
     }
 
     public boolean validaCampos() {
@@ -112,7 +70,6 @@ public class FrmCadConsultoras extends javax.swing.JDialog {
 
         lblCodigo = new javax.swing.JLabel();
         lblNome = new javax.swing.JLabel();
-        btnFechar = new javax.swing.JButton();
         lblCpf = new javax.swing.JLabel();
         lblCodSite = new javax.swing.JLabel();
         lblDataNascimento = new javax.swing.JLabel();
@@ -121,10 +78,8 @@ public class FrmCadConsultoras extends javax.swing.JDialog {
         txtCpf = new javax.swing.JTextField();
         txtCodSite = new javax.swing.JTextField();
         txtDataNascimento = new javax.swing.JTextField();
-        btnNova = new javax.swing.JButton();
         btnSalvar = new javax.swing.JButton();
-        btnEditar = new javax.swing.JButton();
-        btnCancelar = new javax.swing.JButton();
+        btnFechar = new javax.swing.JButton();
         lblStatus = new javax.swing.JLabel();
         CmbBoxStatus = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
@@ -135,14 +90,6 @@ public class FrmCadConsultoras extends javax.swing.JDialog {
         lblCodigo.setText("Código:");
 
         lblNome.setText("Nome:");
-
-        btnFechar.setBackground(new java.awt.Color(255, 255, 255));
-        btnFechar.setText("Fechar");
-        btnFechar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnFecharActionPerformed(evt);
-            }
-        });
 
         lblCpf.setText("CPF:");
 
@@ -156,23 +103,6 @@ public class FrmCadConsultoras extends javax.swing.JDialog {
             }
         });
 
-        btnNova.setBackground(new java.awt.Color(153, 255, 153));
-        btnNova.setText("Nova");
-        btnNova.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btnNovaMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                btnNovaMouseExited(evt);
-            }
-        });
-        btnNova.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnNovaActionPerformed(evt);
-            }
-        });
-
-        btnSalvar.setBackground(new java.awt.Color(153, 255, 153));
         btnSalvar.setText("Salvar");
         btnSalvar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -180,19 +110,10 @@ public class FrmCadConsultoras extends javax.swing.JDialog {
             }
         });
 
-        btnEditar.setBackground(new java.awt.Color(255, 255, 255));
-        btnEditar.setText("Editar");
-        btnEditar.addActionListener(new java.awt.event.ActionListener() {
+        btnFechar.setText("Fechar");
+        btnFechar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEditarActionPerformed(evt);
-            }
-        });
-
-        btnCancelar.setBackground(new java.awt.Color(255, 102, 102));
-        btnCancelar.setText("Cancelar");
-        btnCancelar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCancelarActionPerformed(evt);
+                btnFecharActionPerformed(evt);
             }
         });
 
@@ -212,10 +133,9 @@ public class FrmCadConsultoras extends javax.swing.JDialog {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(12, 12, 12)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(6, 6, 6)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(lblCodigo)
                             .addComponent(lblDataNascimento)
@@ -241,13 +161,7 @@ public class FrmCadConsultoras extends javax.swing.JDialog {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 127, Short.MAX_VALUE))))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnNova)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnSalvar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnEditar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnCancelar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnFechar)))
                 .addContainerGap())
@@ -278,10 +192,7 @@ public class FrmCadConsultoras extends javax.swing.JDialog {
                         .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 99, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnNova)
                     .addComponent(btnSalvar)
-                    .addComponent(btnEditar)
-                    .addComponent(btnCancelar)
                     .addComponent(btnFechar))
                 .addContainerGap())
         );
@@ -289,42 +200,13 @@ public class FrmCadConsultoras extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnFecharActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFecharActionPerformed
-        dispose();
-    }//GEN-LAST:event_btnFecharActionPerformed
-
     private void txtCodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCodigoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtCodigoActionPerformed
 
-    private void btnNovaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovaActionPerformed
-        habilitarCampos();
-        HabilitarBotoes();
-        CmbBoxStatus.setSelectedIndex(0);
-        txtNome.requestFocus();
-    }//GEN-LAST:event_btnNovaActionPerformed
-
-    private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
-//        if (tabelaConsultoras.getSelectedRow() == -1) {
-//            JOptionPane.showMessageDialog(null, "Nenhum registro selecionado.", "Erro", 0);
-//        } else {
-//            txtCodigo.setText(String.valueOf(tabelaConsultoras.getValueAt(tabelaConsultoras.getSelectedRow(), 0)));
-//            txtNome.setText((String) tabelaConsultoras.getValueAt(tabelaConsultoras.getSelectedRow(), 1));
-//            txtCpf.setText((String) tabelaConsultoras.getValueAt(tabelaConsultoras.getSelectedRow(), 2));
-//            txtCodSite.setText(String.valueOf(tabelaConsultoras.getValueAt(tabelaConsultoras.getSelectedRow(), 3)));
-//            txtDataNascimento.setText((String) tabelaConsultoras.getValueAt(tabelaConsultoras.getSelectedRow(), 4));
-//            CmbBoxStatus.setSelectedItem(ConsultoraControle.getConsultoraPorCodigo(Integer.valueOf(txtCodigo.getText())).getStatus());
-//            habilitarCampos();
-//            HabilitarBotoes();
-//            this.estaEditando = 1;
-//        }
-    }//GEN-LAST:event_btnEditarActionPerformed
-
-    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
-        desabilitarCampos();
-        desabilitarBotoes();
-        this.estaEditando = 0;
-    }//GEN-LAST:event_btnCancelarActionPerformed
+    private void btnFecharActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFecharActionPerformed
+        dispose();
+    }//GEN-LAST:event_btnFecharActionPerformed
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
 //        if (validaCampos()) {
@@ -343,14 +225,6 @@ public class FrmCadConsultoras extends javax.swing.JDialog {
     private void CmbBoxStatusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CmbBoxStatusActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_CmbBoxStatusActionPerformed
-
-    private void btnNovaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnNovaMouseEntered
-
-    }//GEN-LAST:event_btnNovaMouseEntered
-
-    private void btnNovaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnNovaMouseExited
-
-    }//GEN-LAST:event_btnNovaMouseExited
 
     /**
      * @param args the command line arguments
@@ -401,10 +275,7 @@ public class FrmCadConsultoras extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<Status> CmbBoxStatus;
-    private javax.swing.JButton btnCancelar;
-    private javax.swing.JButton btnEditar;
     private javax.swing.JButton btnFechar;
-    private javax.swing.JButton btnNova;
     private javax.swing.JButton btnSalvar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JTextField jTextField1;

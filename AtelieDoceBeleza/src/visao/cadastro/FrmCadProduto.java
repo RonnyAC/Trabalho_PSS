@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package visao;
+package visao.cadastro;
 
 import controle.ProdutoControle;
 
@@ -22,39 +22,7 @@ public class FrmCadProduto extends javax.swing.JDialog {
     public FrmCadProduto(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        desabilitarBotoes();
-        desabilitarCampos();
         // ProdutoControle.preencherTabela(tabelaProdutos, Dados.listaProdutos);
-    }
-
-    private void desabilitarBotoes() {
-        btnCancelar.setEnabled(false);
-        btnSalvar.setEnabled(false);
-        btnNovo.setEnabled(true);
-        btnEditar.setEnabled(true);
-        btnFechar.setEnabled(true);
-
-    }
-
-    private void habilitarBotoes() {
-        btnCancelar.setEnabled(true);
-        btnSalvar.setEnabled(true);
-        btnNovo.setEnabled(false);
-        btnEditar.setEnabled(false);
-        btnFechar.setEnabled(false);
-    }
-
-    private void desabilitarCampos() {
-        txtCodigo.setEnabled(false);
-        txtDescricao.setEnabled(false);
-        txtValorRomance.setEnabled(false);
-        txtValorSugerido.setEnabled(false);
-    }
-
-    private void habilitarCampos() {
-        txtDescricao.setEnabled(true);
-        txtValorRomance.setEnabled(true);
-        txtValorSugerido.setEnabled(true);
     }
 
     /**
@@ -75,14 +43,10 @@ public class FrmCadProduto extends javax.swing.JDialog {
         txtDescricao = new javax.swing.JTextField();
         txtValorRomance = new javax.swing.JTextField();
         txtValorSugerido = new javax.swing.JTextField();
-        btnNovo = new javax.swing.JButton();
         btnSalvar = new javax.swing.JButton();
-        btnEditar = new javax.swing.JButton();
-        btnCancelar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        btnFechar.setBackground(new java.awt.Color(255, 255, 255));
         btnFechar.setText("Fechar");
         btnFechar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -104,30 +68,10 @@ public class FrmCadProduto extends javax.swing.JDialog {
             }
         });
 
-        btnNovo.setBackground(new java.awt.Color(153, 255, 153));
-        btnNovo.setText("Novo");
-        btnNovo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnNovoActionPerformed(evt);
-            }
-        });
-
-        btnSalvar.setBackground(new java.awt.Color(153, 255, 153));
         btnSalvar.setText("Salvar");
         btnSalvar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSalvarActionPerformed(evt);
-            }
-        });
-
-        btnEditar.setBackground(new java.awt.Color(255, 255, 255));
-        btnEditar.setText("Editar");
-
-        btnCancelar.setBackground(new java.awt.Color(255, 102, 102));
-        btnCancelar.setText("Cancelar");
-        btnCancelar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCancelarActionPerformed(evt);
             }
         });
 
@@ -138,15 +82,7 @@ public class FrmCadProduto extends javax.swing.JDialog {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(8, 8, 8)
-                        .addComponent(btnNovo)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnSalvar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 167, Short.MAX_VALUE)
-                        .addComponent(btnEditar)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnCancelar)
-                        .addGap(33, 33, 33)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnFechar))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -156,12 +92,15 @@ public class FrmCadProduto extends javax.swing.JDialog {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18))
-                            .addGroup(layout.createSequentialGroup()
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                 .addGap(12, 12, 12)
-                                .addComponent(lblValorRomance)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtValorRomance, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(btnSalvar)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(lblValorRomance)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(txtValorRomance, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(lblValorSugerido)
                             .addComponent(lblDescricao))
@@ -193,10 +132,7 @@ public class FrmCadProduto extends javax.swing.JDialog {
                     .addComponent(txtValorSugerido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(72, 72, 72)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnNovo)
                     .addComponent(btnSalvar)
-                    .addComponent(btnEditar)
-                    .addComponent(btnCancelar)
                     .addComponent(btnFechar))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -219,17 +155,6 @@ public class FrmCadProduto extends javax.swing.JDialog {
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
         ProdutoControle.cadastrarProduto(txtDescricao.getText(), Float.parseFloat(txtValorRomance.getText()), Float.parseFloat(txtValorSugerido.getText()));
     }//GEN-LAST:event_btnSalvarActionPerformed
-
-    private void btnNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovoActionPerformed
-        habilitarBotoes();
-        habilitarCampos();
-        txtDescricao.requestFocus();
-    }//GEN-LAST:event_btnNovoActionPerformed
-
-    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
-        desabilitarBotoes();
-        desabilitarCampos();
-    }//GEN-LAST:event_btnCancelarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -260,25 +185,20 @@ public class FrmCadProduto extends javax.swing.JDialog {
         //</editor-fold>
 
         /* Create and display the dialog */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                FrmCadProduto dialog = new FrmCadProduto(new javax.swing.JFrame(), true);
-                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
-                    @Override
-                    public void windowClosing(java.awt.event.WindowEvent e) {
-                        System.exit(0);
-                    }
-                });
-                dialog.setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            FrmCadProduto dialog = new FrmCadProduto(new javax.swing.JFrame(), true);
+            dialog.addWindowListener(new java.awt.event.WindowAdapter() {
+                @Override
+                public void windowClosing(java.awt.event.WindowEvent e) {
+                    System.exit(0);
+                }
+            });
+            dialog.setVisible(true);
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnCancelar;
-    private javax.swing.JButton btnEditar;
     private javax.swing.JButton btnFechar;
-    private javax.swing.JButton btnNovo;
     private javax.swing.JButton btnSalvar;
     private javax.swing.JLabel lblCodigo;
     private javax.swing.JLabel lblDescricao;

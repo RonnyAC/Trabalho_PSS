@@ -3,9 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package visao;
+package visao.padrao;
 
 import javax.swing.JDialog;
+import visao.cadastro.FrmCadProduto;
+import visao.detalhes.FrmDetProduto;
 
 /**
  *
@@ -13,7 +15,8 @@ import javax.swing.JDialog;
  */
 public class FrmProduto extends javax.swing.JFrame {
 
-        private static FrmProduto instancia;
+    private static FrmProduto instancia;
+
     /**
      * Creates new form formProduto
      */
@@ -21,15 +24,15 @@ public class FrmProduto extends javax.swing.JFrame {
         initComponents();
     }
 
-    public static synchronized FrmProduto getInstacia(){
-        if (instancia == null){
+    public static synchronized FrmProduto getInstacia() {
+        if (instancia == null) {
             instancia = new FrmProduto();
         }
-        
+
         return instancia;
-    
+
     }
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -65,6 +68,11 @@ public class FrmProduto extends javax.swing.JFrame {
         });
 
         btnDetalhes.setText("Detalhes");
+        btnDetalhes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDetalhesActionPerformed(evt);
+            }
+        });
 
         btnFechar.setText("Fechar");
         btnFechar.addActionListener(new java.awt.event.ActionListener() {
@@ -145,11 +153,11 @@ public class FrmProduto extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnFecharActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFecharActionPerformed
-       dispose();
+        dispose();
     }//GEN-LAST:event_btnFecharActionPerformed
 
     private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
-       instancia = null;
+        instancia = null;
     }//GEN-LAST:event_formWindowClosed
 
     private void btnAdicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdicionarActionPerformed
@@ -160,6 +168,16 @@ public class FrmProduto extends javax.swing.JFrame {
         form.setResizable(false);
         form.setVisible(true);
     }//GEN-LAST:event_btnAdicionarActionPerformed
+
+    private void btnDetalhesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDetalhesActionPerformed
+        FrmDetProduto form = new FrmDetProduto(this, true);
+        
+        form.setDefaultCloseOperation(JDialog.DO_NOTHING_ON_CLOSE);
+        form.setTitle("Produtos");
+        form.setLocationRelativeTo(null);
+        form.setResizable(false);
+        form.setVisible(true);
+    }//GEN-LAST:event_btnDetalhesActionPerformed
 
     /**
      * @param args the command line arguments

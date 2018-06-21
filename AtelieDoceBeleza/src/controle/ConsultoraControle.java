@@ -5,6 +5,7 @@
  */
 package controle;
 
+import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
@@ -12,6 +13,8 @@ import modelo.Consultora;
 import modelo.DAOConsultora;
 import modelo.Status;
 import javax.swing.table.DefaultTableModel;
+import modelo.ContasPagar;
+import modelo.DAOContasPagar;
 import modelo.Dados;
 
 /**
@@ -20,22 +23,22 @@ import modelo.Dados;
  */
 public class ConsultoraControle {
     
-    public static void preencherTabela(JTable tabela, List<Consultora> listaConsultoras){
-        
-        DefaultTableModel dtm = (DefaultTableModel) tabela.getModel();
-        dtm.setRowCount(listaConsultoras.size());
-        tabela.setModel(dtm);
-        
-        int linha =0;
-        for(Consultora consultora: listaConsultoras){
-            tabela.setValueAt(consultora.getCodigo(), linha, 0);
-            tabela.setValueAt(consultora.getNome(), linha, 1);
-            tabela.setValueAt(consultora.getCpf(), linha, 2);
-            tabela.setValueAt(consultora.getCodSite(), linha, 3);
-            tabela.setValueAt(consultora.getDataNascimento(), linha, 4);
-            tabela.setValueAt(consultora.getStatus().descricao, linha, 5);
-            linha++;
-        }
+    public static void preencherTabela(JTable tabela){       
+//        
+//        DefaultTableModel dtm = (DefaultTableModel) tabela.getModel();
+//        dtm.setRowCount(listaConsultoras.size());
+//        tabela.setModel(dtm);
+//        
+//        int linha =0;
+//        for(Consultora consultora: listaConsultoras){
+//            tabela.setValueAt(consultora.getCodigo(), linha, 0);
+//            tabela.setValueAt(consultora.getNome(), linha, 1);
+//            tabela.setValueAt(consultora.getCpf(), linha, 2);
+//            tabela.setValueAt(consultora.getCodSite(), linha, 3);
+//            tabela.setValueAt(consultora.getDataNascimento(), linha, 4);
+//            tabela.setValueAt(consultora.getStatus().descricao, linha, 5);
+//            linha++;
+//        }
     }
     
     public static void cadastrarConsultora(String nome, String cpf, Integer codSite, String dataNascimento, Status status){
