@@ -11,6 +11,7 @@ import java.awt.Color;
 import java.awt.Component;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
+import modelo.Consultora;
 import modelo.Dados;
 import modelo.Status;
 
@@ -19,6 +20,7 @@ import modelo.Status;
  * @author Professional
  */
 public class FrmDetConsultoras extends javax.swing.JDialog {
+
     private Component componente;
     int estaEditando = 0;
 
@@ -36,16 +38,27 @@ public class FrmDetConsultoras extends javax.swing.JDialog {
         //ConsultoraControle.preencherTabela(tabelaConsultoras, Dados.listaConsultoras);
     }
 
-    private void habilitaBotoes(){
+    public void preencheCampos(int id) {
+        Consultora consultora = ConsultoraControle.getConsultoraPorCodigo(id);
+
+        txtCodigo.setText(consultora.getCodigo().toString());
+        txtNome.setText(consultora.getNome());
+        txtCpf.setText(consultora.getCpf());
+        txtCodSite.setText(consultora.getCodSite());
+        txtDataNascimento.setText(consultora.getDataNascimento());
+
+    }
+
+    private void habilitaBotoes() {
         btnCancelar.setEnabled(true);
         btnSalvar.setEnabled(true);
     }
-    
-    private void desabilitaBotoes(){
+
+    private void desabilitaBotoes() {
         btnCancelar.setEnabled(false);
         btnSalvar.setEnabled(false);
     }
-    
+
     private void desabilitarCampos() {
         txtCodigo.setEnabled(false);
         txtCodSite.setEnabled(false);
@@ -279,21 +292,32 @@ public class FrmDetConsultoras extends javax.swing.JDialog {
     }//GEN-LAST:event_btnFecharActionPerformed
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
-//        if (validaCampos()) {
-//            if (this.estaEditando == 0) {
-//                ConsultoraControle.cadastrarConsultora(txtNome.getText(), txtCpf.getText(), Integer.parseInt(txtCodSite.getText()), txtDataNascimento.getText(), CmbBoxStatus.getItemAt(CmbBoxStatus.getSelectedIndex()));
-//            } else {
-//                ConsultoraControle.editarConsultora(txtNome.getText(), txtCpf.getText(), Integer.parseInt(txtCodSite.getText()), txtDataNascimento.getText(), CmbBoxStatus.getItemAt(CmbBoxStatus.getSelectedIndex()), tabelaConsultoras.getSelectedRow());
-//                this.estaEditando = 0;
-//            }
-//            desabilitarCampos();
-//            desabilitarBotoes();
-//            ConsultoraControle.preencherTabela(tabelaConsultoras, Dados.listaConsultoras);
-//        }
-    desabilitaBotoes();
-    desabilitarCampos();
-    btnEditar.setEnabled(true);
-    JOptionPane.showMessageDialog(componente, "Cadastro alterado com sucesso!", "Aviso", JOptionPane.INFORMATION_MESSAGE);
+        int id = Integer.parseInt(txtCodigo.getText());
+        String nome = txtNome.getText();
+        String cpf = txtCpf.getText();
+        String dataNascimento = txtDataNascimento.getText();
+        String codSite = txtCodSite.getText();
+        String cStatus = cmbStatus.getSelectedItem().toString();
+        Status status;
+
+        switch (cStatus) {
+            case "ATIVA":
+                status = Status.ATIVA;
+                break;
+            case "INATIVA":
+                status = Status.INATIVA;
+                break;
+            default:
+                status = null;
+                break;
+        }
+
+        ConsultoraControle.editarConsultora(new Consultora(id, nome, cpf, codSite, dataNascimento, status));
+
+        desabilitaBotoes();
+        desabilitarCampos();
+        btnEditar.setEnabled(true);
+        JOptionPane.showMessageDialog(componente, "Cadastro alterado com sucesso!", "Aviso", JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_btnSalvarActionPerformed
 
     private void cmbStatusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbStatusActionPerformed

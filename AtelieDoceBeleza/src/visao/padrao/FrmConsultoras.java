@@ -5,7 +5,12 @@
  */
 package visao.padrao;
 
+import controle.ConsultoraControle;
+import java.text.ParseException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JDialog;
+import javax.swing.text.MaskFormatter;
 import visao.cadastro.FrmCadConsultoras;
 import visao.detalhes.FrmDetConsultoras;
 
@@ -17,11 +22,15 @@ public class FrmConsultoras extends javax.swing.JFrame {
 
     private static FrmConsultoras instance;
 
+    private MaskFormatter ftmCpf;
+
     /**
      * Creates new form FrmCadConsultoras
      */
     private FrmConsultoras() {
         initComponents();
+        formatarCampos();
+        ConsultoraControle.preencherTabela(tblConsultoras);
     }
 
     public static synchronized FrmConsultoras getinstance() {
@@ -30,6 +39,19 @@ public class FrmConsultoras extends javax.swing.JFrame {
         }
 
         return instance;
+    }
+
+    private void formatarCampos() {
+        try {
+            ftmCpf = new MaskFormatter("###.###.###-##");
+            ftmCpf.install(ftxtCpf);
+            ftmCpf.setValidCharacters("0123456789");
+            ftxtCpf.setColumns(8);
+
+        } catch (ParseException ex) {
+            Logger.getLogger(FrmContas.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
     }
 
     /**
@@ -42,29 +64,61 @@ public class FrmConsultoras extends javax.swing.JFrame {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tblConsultoras = new javax.swing.JTable();
         btnAdicionar = new javax.swing.JButton();
         btnDetalhes = new javax.swing.JButton();
         btnFechar = new javax.swing.JButton();
-        jTextField1 = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jLabel3 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
+        txtNome = new javax.swing.JTextField();
+        lblNome = new javax.swing.JLabel();
+        lblCpf = new javax.swing.JLabel();
+        btnPesquisar = new javax.swing.JButton();
+        lblCodSite = new javax.swing.JLabel();
+        txtCodSite = new javax.swing.JTextField();
+        ftxtCpf = new javax.swing.JFormattedTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowFocusListener(new java.awt.event.WindowFocusListener() {
+            public void windowGainedFocus(java.awt.event.WindowEvent evt) {
+                formWindowGainedFocus(evt);
+            }
+            public void windowLostFocus(java.awt.event.WindowEvent evt) {
+            }
+        });
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tblConsultoras.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
                 "ID", "Nome", "Cod. Site", "Status"
             }
-        ));
-        jScrollPane1.setViewportView(jTable1);
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Integer.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        tblConsultoras.getTableHeader().setReorderingAllowed(false);
+        tblConsultoras.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblConsultorasMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(tblConsultoras);
+        if (tblConsultoras.getColumnModel().getColumnCount() > 0) {
+            tblConsultoras.getColumnModel().getColumn(0).setMinWidth(50);
+            tblConsultoras.getColumnModel().getColumn(0).setMaxWidth(50);
+        }
 
         btnAdicionar.setText("Adicionar");
         btnAdicionar.addActionListener(new java.awt.event.ActionListener() {
@@ -87,22 +141,22 @@ public class FrmConsultoras extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setText("Nome");
+        lblNome.setText("Nome");
 
-        jLabel2.setText("CPF:");
+        lblCpf.setText("CPF:");
 
-        jButton1.setText("Pesquisar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnPesquisar.setText("Pesquisar");
+        btnPesquisar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnPesquisarActionPerformed(evt);
             }
         });
 
-        jLabel3.setText("Cod.Site:");
+        lblCodSite.setText("Cod.Site:");
 
-        jTextField3.addActionListener(new java.awt.event.ActionListener() {
+        txtCodSite.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField3ActionPerformed(evt);
+                txtCodSiteActionPerformed(evt);
             }
         });
 
@@ -121,21 +175,21 @@ public class FrmConsultoras extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnFechar))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
+                        .addComponent(lblNome)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField1)
+                        .addComponent(txtNome)
                         .addGap(13, 13, 13))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(8, 8, 8)
-                        .addComponent(jLabel2)
+                        .addComponent(lblCpf)
+                        .addGap(8, 8, 8)
+                        .addComponent(ftxtCpf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(lblCodSite)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtCodSite, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jLabel3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButton1)
+                        .addComponent(btnPesquisar)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -144,16 +198,16 @@ public class FrmConsultoras extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(16, 16, 16)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
+                    .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblNome))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel2)
-                        .addComponent(jLabel3)
-                        .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jButton1))
+                        .addComponent(lblCpf)
+                        .addComponent(lblCodSite)
+                        .addComponent(txtCodSite, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(ftxtCpf, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnPesquisar))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(11, 11, 11)
@@ -181,41 +235,42 @@ public class FrmConsultoras extends javax.swing.JFrame {
     }//GEN-LAST:event_btnFecharActionPerformed
 
     private void btnDetalhesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDetalhesActionPerformed
-        FrmDetConsultoras form = new FrmDetConsultoras(this, true);
+        int linha = tblConsultoras.getSelectedRow();
+        int id = ConsultoraControle.getIdConsultoraTabela(tblConsultoras, linha);
         
+        FrmDetConsultoras form = new FrmDetConsultoras(this, true);
+        form.preencheCampos(id);
         form.setDefaultCloseOperation(JDialog.DO_NOTHING_ON_CLOSE);
         form.setTitle("Produtos");
         form.setLocationRelativeTo(null);
         form.setResizable(false);
         form.setVisible(true);
+        
     }//GEN-LAST:event_btnDetalhesActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-//        String dataInicial = ftxtDataInicial.getText();
-//        String dataFinal = ftxtDataFinal.getText();
-//        Double valorIncial;
-//        Double valorFinal;
-//        if (ftxtValorInicial.getText().equalsIgnoreCase("")) {
-//            valorIncial = null;
-//        } else {
-//            valorIncial = Double.parseDouble(ftxtValorInicial.getText());
-//        }
-//
-//        if (ftxtValorFinal.getText().equalsIgnoreCase("")) {
-//            valorFinal = null;
-//        } else {
-//            valorFinal = Double.parseDouble(ftxtValorFinal.getText());
-//        }
-//
-//        ContasPagarControle.buscarConta(dataInicial, dataFinal, valorIncial,
-//            valorFinal, txtDescricao.getText(), tblContas);
-//
-//        System.out.println("Busca Realizada!!!");
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void btnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarActionPerformed
+        String nome = txtNome.getText();
+        String codSite = txtCodSite.getText();
+        String cpf = ftxtCpf.getText().replaceAll("\\.|\\-|\\ ", "");
 
-    private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
+        if (!cpf.equals("")) {
+            cpf = ftxtCpf.getText();
+        }
+        
+        ConsultoraControle.buscarConsultora(nome, codSite, cpf, tblConsultoras);
+    }//GEN-LAST:event_btnPesquisarActionPerformed
+
+    private void txtCodSiteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCodSiteActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField3ActionPerformed
+    }//GEN-LAST:event_txtCodSiteActionPerformed
+
+    private void formWindowGainedFocus(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowGainedFocus
+        ConsultoraControle.preencherTabela(tblConsultoras);
+    }//GEN-LAST:event_formWindowGainedFocus
+
+    private void tblConsultorasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblConsultorasMouseClicked
+        
+    }//GEN-LAST:event_tblConsultorasMouseClicked
 
     /**
      * @param args the command line arguments
@@ -248,10 +303,8 @@ public class FrmConsultoras extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new FrmConsultoras().setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            new FrmConsultoras().setVisible(true);
         });
     }
 
@@ -259,14 +312,14 @@ public class FrmConsultoras extends javax.swing.JFrame {
     private javax.swing.JButton btnAdicionar;
     private javax.swing.JButton btnDetalhes;
     private javax.swing.JButton btnFechar;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
+    private javax.swing.JButton btnPesquisar;
+    private javax.swing.JFormattedTextField ftxtCpf;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
+    private javax.swing.JLabel lblCodSite;
+    private javax.swing.JLabel lblCpf;
+    private javax.swing.JLabel lblNome;
+    private javax.swing.JTable tblConsultoras;
+    private javax.swing.JTextField txtCodSite;
+    private javax.swing.JTextField txtNome;
     // End of variables declaration//GEN-END:variables
 }

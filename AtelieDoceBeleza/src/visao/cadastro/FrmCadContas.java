@@ -233,12 +233,8 @@ public class FrmCadContas extends javax.swing.JDialog {
     }//GEN-LAST:event_txtCodigoActionPerformed
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
-        if(this.estaEditando == 0){
             ContasPagarControle.cadastraContaPagar(txtDescricao.getText(), txtData.getText(), Integer.parseInt(txtParcelas.getText()), txtDataVencimento.getText(), Float.parseFloat(txtValorTotal.getText()), Float.parseFloat(txtValorParcela.getText()), cmbBoxContasPagar.getItemAt(cmbBoxContasPagar.getSelectedIndex()));
-        }else{
-//            ContasPagarControle.editarContaPagar(txtDescricao.getText(), txtData.getText(), Integer.parseInt(txtParcelas.getText()), txtDataVencimento.getText(),Float.parseFloat(txtValorTotal.getText()) ,Float.parseFloat(txtValorParcela.getText()), cmbBoxContasPagar.getItemAt(cmbBoxContasPagar.getSelectedIndex()), tabelaContaPagar.getSelectedRow());
-            this.estaEditando = 0;
-        }
+
     }//GEN-LAST:event_btnSalvarActionPerformed
 
     private void txtDescricaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDescricaoActionPerformed

@@ -6,10 +6,9 @@
 package visao.cadastro;
 
 import controle.ConsultoraControle;
-import java.awt.Color;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
-import modelo.Dados;
+import modelo.Consultora;
 import modelo.Status;
 
 /**
@@ -17,8 +16,6 @@ import modelo.Status;
  * @author Professional
  */
 public class FrmCadConsultoras extends javax.swing.JDialog {
-
-    int estaEditando = 0;
 
     /**
      * Creates new form frmConsultoras
@@ -28,7 +25,8 @@ public class FrmCadConsultoras extends javax.swing.JDialog {
     public FrmCadConsultoras(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        //ConsultoraControle.preencherTabela(tabelaConsultoras, Dados.listaConsultoras);
+        txtCodigo.setEnabled(false);
+        txtCodigo.setText("0");
     }
 
     public boolean validaCampos() {
@@ -209,17 +207,28 @@ public class FrmCadConsultoras extends javax.swing.JDialog {
     }//GEN-LAST:event_btnFecharActionPerformed
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
-//        if (validaCampos()) {
-//            if (this.estaEditando == 0) {
-//                ConsultoraControle.cadastrarConsultora(txtNome.getText(), txtCpf.getText(), Integer.parseInt(txtCodSite.getText()), txtDataNascimento.getText(), CmbBoxStatus.getItemAt(CmbBoxStatus.getSelectedIndex()));
-//            } else {
-//                ConsultoraControle.editarConsultora(txtNome.getText(), txtCpf.getText(), Integer.parseInt(txtCodSite.getText()), txtDataNascimento.getText(), CmbBoxStatus.getItemAt(CmbBoxStatus.getSelectedIndex()), tabelaConsultoras.getSelectedRow());
-//                this.estaEditando = 0;
-//            }
-//            desabilitarCampos();
-//            desabilitarBotoes();
-//            ConsultoraControle.preencherTabela(tabelaConsultoras, Dados.listaConsultoras);
-//        }
+
+        int id = Integer.parseInt(txtCodigo.getText());
+        String nome = txtNome.getText();
+        String cpf = txtCpf.getText();
+        String codSite = txtCodSite.getText();
+        String dataNascimento = txtDataNascimento.getText();
+        String cmbStatus = CmbBoxStatus.getSelectedItem().toString();
+        Status status;
+        
+        switch (cmbStatus) {
+            case "ATIVA":
+                status = Status.ATIVA;
+                break;
+            case "INATIVA":
+                status = Status.INATIVA;
+                break;
+            default:
+                status = null;
+                break;
+        }
+        
+        ConsultoraControle.cadastrarConsultora(new Consultora(id, nome, cpf, codSite, dataNascimento, status));
     }//GEN-LAST:event_btnSalvarActionPerformed
 
     private void CmbBoxStatusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CmbBoxStatusActionPerformed

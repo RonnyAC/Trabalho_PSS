@@ -14,7 +14,7 @@ public class Consultora implements Serializable{
     private Integer codigo;
     private String nome;
     private String cpf;
-    private Integer codSite;
+    private String codSite;
     private String dataNascimento;
     private Status status;
 
@@ -22,6 +22,17 @@ public class Consultora implements Serializable{
     public Consultora() {
     }
 
+    public Consultora(Integer codigo, String nome, String cpf, String codSite, String dataNascimento, Status status) {
+        this.codigo = codigo;
+        this.nome = nome;
+        this.cpf = cpf;
+        this.codSite = codSite;
+        this.dataNascimento = dataNascimento;
+        this.status = status;
+    }
+
+    
+    
     //METODOS
     public Integer getCodigo() {
         return codigo;
@@ -47,11 +58,11 @@ public class Consultora implements Serializable{
         this.cpf = cpf;
     }
 
-    public Integer getCodSite() {
+    public String getCodSite() {
         return codSite;
     }
 
-    public void setCodSite(Integer codSite) {
+    public void setCodSite(String codSite) {
         this.codSite = codSite;
     }
 

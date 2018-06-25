@@ -25,11 +25,11 @@ public class DAOContasPagar {
         return Dados.listaContasPagar;
     }
 
-    public boolean salvar(ContasPagar contasPagar) {
-        int newID = buscarID();
+    public boolean incluir(ContasPagar contasPagar) {
+        ConectaSQLite conecta = new ConectaSQLite();
 
-        ConectaSQLite conectaSQLite = new ConectaSQLite();
-        conectaSQLite.conectar();
+        conecta.conectar();
+        int newID = buscarID("SELECT coalesce(MAX(id), 0)+1 as newID FROM tbl_contas_pagar");
 
         String sqlInsert = "INSERT INTO tbl_contas_pagar("
                 + "id,"
@@ -43,7 +43,7 @@ public class DAOContasPagar {
                 + " VALUES(?, ?, ?, ?, ?, ?, ?, ?)"
                 + ";";
 
-        PreparedStatement preparedStatement = conectaSQLite.criarPreparedStatement(sqlInsert);
+        PreparedStatement preparedStatement = conecta.criarPreparedStatement(sqlInsert);
 
         try {
             preparedStatement.setInt(1, newID);
@@ -67,7 +67,7 @@ public class DAOContasPagar {
                     Logger.getLogger(DAOContasPagar.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
-            conectaSQLite.desconectar();
+            conecta.desconectar();
         }
         return true;
     }
@@ -104,50 +104,15 @@ public class DAOContasPagar {
             preparedStatement.executeUpdate();
 
         } catch (SQLException e) {
-            e.printStackTrace();
         } finally {
             try {
                 preparedStatement.close();
                 conectaSQLite.desconectar();
             } catch (SQLException ex) {
-                ex.printStackTrace();
             }
         }
 
         return true;
-    }
-
-    private int buscarID() {
-        int newID = 0;
-        ConectaSQLite conectaSQLite = new ConectaSQLite();
-        conectaSQLite.conectar();
-        ResultSet resultSet = null;
-        Statement statement = null;
-
-        String query = "SELECT coalesce(MAX(id), 0)+1 as newID FROM tbl_contas_pagar";
-
-        statement = conectaSQLite.criarStatement();
-
-        try {
-            resultSet = statement.executeQuery(query);
-            while(resultSet.next()){
-                newID = resultSet.getInt(1);
-            }
-            
-        } catch (SQLException e) {
-            System.err.println(e.getMessage());
-        } finally {
-            
-            try {
-                resultSet.close();
-                statement.close();
-                conectaSQLite.desconectar();
-            } catch (SQLException e) {
-                System.err.println("Erro no fechamento");
-            }
-        }
-
-        return newID;
     }
 
     public ArrayList<ContasPagar> buscar(String query) {
@@ -164,16 +129,16 @@ public class DAOContasPagar {
 
             while (resultSet.next()) {
                 ContasPagar conta = new ContasPagar();
-                
+
                 conta.codigo(resultSet.getInt("id"));
                 conta.setDescricaoConta(resultSet.getString("descricao"));
                 conta.setDataConta(resultSet.getString("data_conta"));
                 conta.setParcelas(resultSet.getInt("parcelas"));
                 conta.setDataVencimento(resultSet.getString("data_vencimento"));
-                conta.setValorTotal((float)resultSet.getDouble("valor_total"));
-                conta.setValorParcela((float)resultSet.getDouble("valor_parcela"));
+                conta.setValorTotal((float) resultSet.getDouble("valor_total"));
+                conta.setValorParcela((float) resultSet.getDouble("valor_parcela"));
                 //conta.setContaPaga(resultSet.getBoolean("conta_paga"));
-                
+
                 contas.add(conta);
 
             }
@@ -190,5 +155,37 @@ public class DAOContasPagar {
         }
 
         return contas;
+    }
+
+    public int buscarID(String query) {
+        int newID = 0;
+        ConectaSQLite conecta = new ConectaSQLite();
+
+        conecta.conectar();
+        ResultSet resultSet = null;
+        Statement statement = null;
+
+        statement = conecta.criarStatement();
+
+        try {
+            resultSet = statement.executeQuery(query);
+            while (resultSet.next()) {
+                newID = resultSet.getInt(1);
+            }
+
+        } catch (SQLException e) {
+            System.err.println(e.getMessage());
+        } finally {
+
+            try {
+                resultSet.close();
+                statement.close();
+                conecta.desconectar();
+            } catch (SQLException e) {
+                System.err.println("Erro no fechamento");
+            }
+        }
+
+        return newID;
     }
 }
