@@ -1,6 +1,7 @@
 
 package controle;
 
+import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
@@ -13,14 +14,18 @@ import modelo.Produto;
  * @author Rafael
  */
 public class ProdutoControle {
-   public static void preencherTabela(JTable tabela, List<Produto> listaProdutos){
-        
+   public static void preencherTabela(JTable tabela){
         DefaultTableModel dtm = (DefaultTableModel) tabela.getModel();
-        dtm.setRowCount(listaProdutos.size());
+        
+        List<Produto> lista = new ArrayList<>();
+        DAOProduto daoProduto = new DAOProduto();
+        
+        lista = daoProduto.buscar("SELECT * from tbl_produtos");
+        dtm.setRowCount(lista.size());
         tabela.setModel(dtm);
         
         int linha =0;
-        for(Produto produto: listaProdutos){
+        for(Produto produto: lista){
             tabela.setValueAt(produto.getCodigo(), linha, 0);
             tabela.setValueAt(produto.getDescricao(), linha, 1);
             tabela.setValueAt(produto.getValorRomance(), linha, 2);
@@ -28,13 +33,10 @@ public class ProdutoControle {
             linha++;
         }
     }
-   public static void cadastrarProduto(String descricao , float valorRomance, float valorSugerido){
-        Produto produto = new Produto();
-        produto.setDescricao(descricao);
-        produto.setValorRomance(valorRomance);
-        produto.setValorSugerido(valorSugerido);
+   public static void cadastrarProduto(Produto produto){
+
         DAOProduto daoProduto = new DAOProduto();
-        daoProduto.salvar(produto);
+        daoProduto.incluir(produto);
         JOptionPane.showMessageDialog(null, "Produto Cadastrado!", "Sucesso", 1);
     }
    
@@ -54,4 +56,19 @@ public class ProdutoControle {
         
         
     }
+
+    public static int getIdProdutoTabela(JTable tabela, int linha) {
+        DefaultTableModel dtm = (DefaultTableModel)tabela.getModel();
+        int id = (Integer)dtm.getValueAt(linha, 0);
+        return id;
+    }
+
+    public static Produto getProdutoPorCodigo(int id) {
+        DAOProduto daoProduto = new DAOProduto();
+        
+        Produto produto = daoProduto.getProduto("SELECT * FROM tbl_produtos WHERE id = " + id + ";");
+        
+        return produto;
+    }
+    
 }

@@ -99,10 +99,8 @@ public class ConsultoraControle {
     }
     
     public static int getIdConsultoraTabela(JTable tabela, int linha){
-        DefaultTableModel dtm = (DefaultTableModel)tabela.getModel();
-        
-        int id = (Integer)dtm.getValueAt(linha, 0);
-        
+        DefaultTableModel dtm = (DefaultTableModel)tabela.getModel();        
+        int id = (Integer)dtm.getValueAt(linha, 0);        
         return id;
     }
 

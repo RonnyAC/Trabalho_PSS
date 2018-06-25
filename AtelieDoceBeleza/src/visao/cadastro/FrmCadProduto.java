@@ -6,6 +6,7 @@
 package visao.cadastro;
 
 import controle.ProdutoControle;
+import modelo.Produto;
 
 /**
  *
@@ -22,6 +23,9 @@ public class FrmCadProduto extends javax.swing.JDialog {
     public FrmCadProduto(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        txtCodigo.setEnabled(false);
+        txtCodigo.setText("0");
+        
         // ProdutoControle.preencherTabela(tabelaProdutos, Dados.listaProdutos);
     }
 
@@ -140,6 +144,7 @@ public class FrmCadProduto extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    
     private void btnFecharActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFecharActionPerformed
 
         System.out.println("Botão pressionado");
@@ -153,7 +158,14 @@ public class FrmCadProduto extends javax.swing.JDialog {
     }//GEN-LAST:event_txtCodigoActionPerformed
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
-        ProdutoControle.cadastrarProduto(txtDescricao.getText(), Float.parseFloat(txtValorRomance.getText()), Float.parseFloat(txtValorSugerido.getText()));
+
+        int id = Integer.parseInt(txtCodigo.getText());
+        String descricao = txtDescricao.getText();
+        float valorRomance = Float.parseFloat(txtValorRomance.getText().replaceAll("\\,", "\\."));
+        float valorSugerido = Float.parseFloat(txtValorSugerido.getText().replaceAll("\\,", "\\."));
+        
+
+        ProdutoControle.cadastrarProduto(new Produto(id, descricao, valorRomance, valorSugerido));
     }//GEN-LAST:event_btnSalvarActionPerformed
 
     /**

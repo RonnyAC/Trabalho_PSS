@@ -15,7 +15,16 @@ public class Produto {
     private float valorSugerido;
 
     public Produto() {
-    }    
+    }
+
+    public Produto(Integer codigo, String descricao, float valorRomance, float valorSugerido) {
+        this.codigo = codigo;
+        this.descricao = descricao;
+        this.valorRomance = valorRomance;
+        this.valorSugerido = valorSugerido;
+    }
+    
+    
     
 
     public Integer getCodigo() {

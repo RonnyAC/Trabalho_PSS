@@ -5,6 +5,7 @@
  */
 package visao.padrao;
 
+import controle.ProdutoControle;
 import javax.swing.JDialog;
 import visao.cadastro.FrmCadProduto;
 import visao.detalhes.FrmDetProduto;
@@ -22,6 +23,7 @@ public class FrmProduto extends javax.swing.JFrame {
      */
     public FrmProduto() {
         initComponents();
+        ProdutoControle.preencherTabela(tblProduto);
     }
 
     public static synchronized FrmProduto getInstacia() {
@@ -54,6 +56,13 @@ public class FrmProduto extends javax.swing.JFrame {
         jTextField1 = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowFocusListener(new java.awt.event.WindowFocusListener() {
+            public void windowGainedFocus(java.awt.event.WindowEvent evt) {
+                formWindowGainedFocus(evt);
+            }
+            public void windowLostFocus(java.awt.event.WindowEvent evt) {
+            }
+        });
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosed(java.awt.event.WindowEvent evt) {
                 formWindowClosed(evt);
@@ -170,14 +179,21 @@ public class FrmProduto extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAdicionarActionPerformed
 
     private void btnDetalhesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDetalhesActionPerformed
+        int linha = tblProduto.getSelectedRow();
+        int id = ProdutoControle.getIdProdutoTabela(tblProduto, linha);
+
         FrmDetProduto form = new FrmDetProduto(this, true);
-        
+        form.preencheCampos(id);
         form.setDefaultCloseOperation(JDialog.DO_NOTHING_ON_CLOSE);
         form.setTitle("Produtos");
         form.setLocationRelativeTo(null);
         form.setResizable(false);
         form.setVisible(true);
     }//GEN-LAST:event_btnDetalhesActionPerformed
+
+    private void formWindowGainedFocus(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowGainedFocus
+        ProdutoControle.preencherTabela(tblProduto);
+    }//GEN-LAST:event_formWindowGainedFocus
 
     /**
      * @param args the command line arguments

@@ -5,9 +5,13 @@
  */
 package visao.detalhes;
 
+import controle.ConsultoraControle;
 import controle.ProdutoControle;
 import java.awt.Component;
 import javax.swing.JOptionPane;
+import modelo.Consultora;
+import modelo.Produto;
+import modelo.Status;
 
 /**
  *
@@ -29,6 +33,14 @@ public class FrmDetProduto extends javax.swing.JDialog {
         desabilitarBotoes();
         desabilitarCampos();
         // ProdutoControle.preencherTabela(tabelaProdutos, Dados.listaProdutos);
+    }
+    
+    public void preencheCampos(int id){
+        Produto produto = ProdutoControle.getProdutoPorCodigo(id);
+        txtCodigo.setText(produto.getCodigo().toString());
+        txtDescricao.setText(produto.getDescricao());
+        txtValorRomance.setText(String.valueOf(produto.getValorRomance()));
+        txtValorSugerido.setText(String.valueOf(produto.getValorSugerido()));
     }
 
     private void desabilitarBotoes() {
@@ -215,7 +227,15 @@ public class FrmDetProduto extends javax.swing.JDialog {
     }//GEN-LAST:event_txtCodigoActionPerformed
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
-        //ProdutoControle.cadastrarProduto(txtDescricao.getText(), Float.parseFloat(txtValorRomance.getText()), Float.parseFloat(txtValorSugerido.getText()));
+        int id = Integer.parseInt(txtCodigo.getText());
+        String descricao = txtDescricao.getText();
+        float valorRomance = Float.parseFloat(txtValorRomance.getText());
+        float valorSugerido = Float.parseFloat(txtValorSugerido.getText());
+
+        ProdutoControle.editarProduto(descricao, valorRomance, valorSugerido, id);
+
+        btnEditar.setEnabled(true);
+        
         desabilitarBotoes();
         desabilitarCampos();
         JOptionPane.showMessageDialog(componente, "Cadastro alterado com sucesso!", "Aviso", JOptionPane.INFORMATION_MESSAGE);
