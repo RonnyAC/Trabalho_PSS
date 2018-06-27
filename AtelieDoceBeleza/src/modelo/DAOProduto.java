@@ -15,11 +15,6 @@ import java.util.logging.Logger;
  * @author Rafael
  */
 public class DAOProduto {
-    //Retorna lista de Consultoras (Futura persistência com Banco de Dados)
-
-    public List<Produto> getLista() {
-        return Dados.listaProdutos;
-    }
 
     //Insere uma nova Consultora (Futura persistência com Banco de Dados)
     public boolean incluir(Produto produto) {
@@ -61,14 +56,35 @@ public class DAOProduto {
         return true;
     }
 
-    public boolean alterar(int posicao, Produto produto) {
-        Dados.listaProdutos.set(posicao, produto);
-        produto.setCodigo(posicao + 1);
+    public boolean alterar(String query, Produto produto) {
+        ConectaSQLite conectaSQLite = new ConectaSQLite();
+        conectaSQLite.conectar();
+
+        PreparedStatement preparedStatement = null;
+
+        try {
+            preparedStatement = conectaSQLite.criarPreparedStatement(query);
+
+            preparedStatement.setString(1, produto.getDescricao());
+            preparedStatement.setFloat(2, produto.getValorRomance());
+            preparedStatement.setFloat(3, produto.getValorSugerido());
+            preparedStatement.setInt(4, produto.getCodigo());
+
+            preparedStatement.executeUpdate();
+
+        } catch (SQLException e) {
+        } finally {
+            try {
+                preparedStatement.close();
+                conectaSQLite.desconectar();
+            } catch (SQLException ex) {
+            }
+        }
         return true;
     }
 
     public boolean remover(Produto produto) {
-        Dados.listaProdutos.remove(produto);
+        
         return true;
     }
 
@@ -158,7 +174,7 @@ public class DAOProduto {
             produto.setDescricao(resultSet.getString("descricao"));
             produto.setValorRomance(resultSet.getFloat("valor_romance"));
             produto.setValorSugerido(resultSet.getFloat("valor_sugerido"));
-            
+
         } catch (SQLException e) {
             System.err.println("ID nao encontrado" + e.getMessage());
         } finally {

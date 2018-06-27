@@ -11,7 +11,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -20,10 +19,6 @@ import java.util.logging.Logger;
  * @author Ronny
  */
 public class DAOContasPagar {
-
-    public List<ContasPagar> getLista() {
-        return Dados.listaContasPagar;
-    }
 
     public boolean incluir(ContasPagar contasPagar) {
         ConectaSQLite conecta = new ConectaSQLite();

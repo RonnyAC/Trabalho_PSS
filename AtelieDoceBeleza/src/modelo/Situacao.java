@@ -10,7 +10,7 @@ package modelo;
  * @author Ronny
  */
 public enum Situacao {
-    PAGA("Ativa"), NAOPAGA("Inativa");
+    PAGA("Paga"), NAOPAGA("Naopaga");
 
     public String descricao;
 

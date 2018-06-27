@@ -5,13 +5,10 @@
  */
 package visao.detalhes;
 
-import controle.ConsultoraControle;
 import controle.ProdutoControle;
 import java.awt.Component;
 import javax.swing.JOptionPane;
-import modelo.Consultora;
 import modelo.Produto;
-import modelo.Status;
 
 /**
  *
@@ -229,10 +226,10 @@ public class FrmDetProduto extends javax.swing.JDialog {
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
         int id = Integer.parseInt(txtCodigo.getText());
         String descricao = txtDescricao.getText();
-        float valorRomance = Float.parseFloat(txtValorRomance.getText());
-        float valorSugerido = Float.parseFloat(txtValorSugerido.getText());
+        float valorRomance = Float.parseFloat(txtValorRomance.getText().replaceAll("\\,", "\\."));
+        float valorSugerido = Float.parseFloat(txtValorSugerido.getText().replaceAll("\\,", "\\."));
 
-        ProdutoControle.editarProduto(descricao, valorRomance, valorSugerido, id);
+        ProdutoControle.editarProduto(new Produto(id, descricao, valorRomance, valorSugerido));
 
         btnEditar.setEnabled(true);
         

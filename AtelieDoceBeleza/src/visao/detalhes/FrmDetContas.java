@@ -5,7 +5,6 @@
  */
 package visao.detalhes;
 
-import controle.ContasPagarControle;
 import javax.swing.DefaultComboBoxModel;
 import modelo.Situacao;
 

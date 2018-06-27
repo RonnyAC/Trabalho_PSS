@@ -11,9 +11,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import modelo.Consultora;
 import modelo.DAOConsultora;
-import modelo.Status;
 import javax.swing.table.DefaultTableModel;
-import modelo.Dados;
 
 /**
  *

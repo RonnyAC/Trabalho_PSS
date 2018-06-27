@@ -19,6 +19,10 @@ public class ConectaSQLite {
 
     private Connection conexao;
 
+    /**
+     * Metodo que conecta com o Banco de Dados.
+     * @return 
+     */
     public boolean conectar() {
         try {
             String url = "jdbc:sqlite:banco de dados/adb.db";
@@ -31,7 +35,11 @@ public class ConectaSQLite {
         System.out.println("Conectou");
         return true;
     }
-
+    
+    /**
+     * Método para desconectar do banco de dados
+     * @return 
+     */
     public boolean desconectar() {
         try {
             if (this.conexao.isClosed() == false) {
@@ -46,6 +54,7 @@ public class ConectaSQLite {
         return true;
     }
 
+    
     public Statement criarStatement() {
         try {
             return this.conexao.createStatement();

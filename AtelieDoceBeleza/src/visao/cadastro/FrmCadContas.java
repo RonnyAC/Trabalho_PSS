@@ -26,6 +26,7 @@ public class FrmCadContas extends javax.swing.JDialog {
     public FrmCadContas(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        txtCodigo.setEditable(false);
     }
 
     /**

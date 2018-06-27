@@ -5,7 +5,6 @@
  */
 package visao.padrao;
 
-import controle.ContasPagarControle;
 import javax.swing.JDialog;
 import visao.cadastro.FrmCadSacola;
 
