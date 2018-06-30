@@ -27,50 +27,70 @@
               <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <Group type="103" groupAlignment="1" attributes="0">
-                          <Component id="lblCodigo" min="-2" max="-2" attributes="0"/>
-                          <Component id="lblDataNascimento" min="-2" max="-2" attributes="0"/>
-                          <Component id="lblStatus" alignment="1" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="txtDataNascimento" min="-2" pref="100" max="-2" attributes="0"/>
-                          <Component id="txtCodigo" min="-2" pref="100" max="-2" attributes="0"/>
-                          <Component id="cmbStatus" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
                       <Component id="btnEditar" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="btnSalvar" min="-2" max="-2" attributes="0"/>
-                  </Group>
-              </Group>
-              <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
-                      <Group type="103" groupAlignment="1" attributes="0">
-                          <Component id="lblCpf" min="-2" max="-2" attributes="0"/>
-                          <Component id="lblNome" min="-2" max="-2" attributes="0"/>
-                          <Component id="lblCodSite" alignment="1" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="txtNome" max="32767" attributes="0"/>
-                          <Component id="txtCpf" max="32767" attributes="0"/>
                           <Group type="102" attributes="0">
-                              <Component id="txtCodSite" min="-2" pref="60" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="txtContatos" pref="127" max="32767" attributes="0"/>
+                              <EmptySpace min="-2" pref="81" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="1" attributes="0">
+                                  <Component id="lblCpf" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblNome" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblCodSite" alignment="1" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="txtNome" max="32767" attributes="0"/>
+                                  <Component id="txtCpf" max="32767" attributes="0"/>
+                                  <Group type="102" attributes="0">
+                                      <Component id="txtCodSite" min="-2" pref="60" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="txtContatos" pref="81" max="32767" attributes="0"/>
+                                  </Group>
+                              </Group>
+                          </Group>
+                          <Group type="102" attributes="0">
+                              <Component id="btnCancelar" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
+                              <Component id="btnFechar" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
                   <Group type="102" attributes="0">
-                      <Component id="btnCancelar" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="32767" attributes="0"/>
-                      <Component id="btnFechar" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" attributes="0">
+                              <Group type="103" groupAlignment="1" attributes="0">
+                                  <Component id="lblCodigo" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblDataNascimento" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblStatus" alignment="1" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="txtDataNascimento" min="-2" pref="100" max="-2" attributes="0"/>
+                                  <Component id="txtCodigo" min="-2" pref="100" max="-2" attributes="0"/>
+                                  <Component id="cmbStatus" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="lblRelatorios" min="-2" max="-2" attributes="0"/>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <EmptySpace min="-2" pref="4" max="-2" attributes="0"/>
+                                      <Component id="btnRelatorioVendas" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                      <Component id="btnRelatorioFrequencia" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                      <Component id="btnRelatorioConfiabilidade" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                          </Group>
+                      </Group>
+                      <EmptySpace min="0" pref="198" max="32767" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
@@ -95,17 +115,23 @@
                   <Component id="txtCpf" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="lblStatus" min="-2" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="cmbStatus" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="lblCodSite" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="txtCodSite" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="txtContatos" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="cmbStatus" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblCodSite" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtCodSite" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtContatos" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblStatus" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="99" max="32767" attributes="0"/>
+              <EmptySpace pref="30" max="32767" attributes="0"/>
+              <Component id="lblRelatorios" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="btnRelatorioVendas" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnRelatorioFrequencia" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnRelatorioConfiabilidade" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="btnCancelar" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="btnFechar" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -231,6 +257,26 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCancelarActionPerformed"/>
       </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnRelatorioVendas">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Vendas"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblRelatorios">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Relat&#xf3;rios:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnRelatorioFrequencia">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Frequ&#xea;ncia"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnRelatorioConfiabilidade">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Confiabilidade"/>
+      </Properties>
     </Component>
   </SubComponents>
 </Form>

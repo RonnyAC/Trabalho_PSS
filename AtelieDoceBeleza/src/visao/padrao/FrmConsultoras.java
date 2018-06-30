@@ -108,6 +108,7 @@ public class FrmConsultoras extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        tblConsultoras.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         tblConsultoras.getTableHeader().setReorderingAllowed(false);
         tblConsultoras.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
