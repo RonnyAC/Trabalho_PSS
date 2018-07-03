@@ -19,7 +19,7 @@ public class DAOConsultora {
     //Insere uma nova Consultora (Futura persistência com Banco de Dados)
     public boolean incluir(Consultora consultora) {
         ConectaSQLite conecta = new ConectaSQLite();
-
+        
         conecta.conectar();
 
         int newID = buscarID("SELECT coalesce(MAX(id), 0)+1 as newID FROM tbl_consultoras");
